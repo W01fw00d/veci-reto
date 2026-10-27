@@ -1,11 +1,11 @@
 // @ts-check
 
 import { useCallback, useRef, useState } from 'react';
-import AddItemModal from './components/AddItemModal.jsx';
-import AppHeader from './components/AppHeader.jsx';
-import ItemList from './components/ItemList.jsx';
-import ItemListButtonRow from './components/ItemListButtonRow.jsx';
-import Panel from './components/ui/Panel.jsx';
+import AddItemModal from './components/AddItemModal';
+import AppHeader from './components/AppHeader';
+import ItemList from './components/ItemList';
+import ItemListButtonRow from './components/ItemListButtonRow';
+import Panel from './components/ui/Panel';
 
 /**
  * @typedef {{id: number, text: string}} Item

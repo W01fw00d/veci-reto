@@ -20,6 +20,7 @@ set up as a monorepo with two independent implementations: Vanilla JS and React.
 - Install dependencies from the root directory with `npm install`.
 - To build production versions of both applications, run `npm run build`.
 - Run `npm run lint` to lint both applications with Oxlint.
+- Run `npm run test:components` to run the React component tests in Playwright.
 
 ## About
 

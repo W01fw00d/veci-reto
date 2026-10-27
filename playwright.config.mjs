@@ -1,0 +1,22 @@
+import { defineConfig, devices } from '@playwright/test';
+
+const galleryUrl = 'http://127.0.0.1:5173/playwright/gallery/index.html';
+
+export default defineConfig({
+  projects: [
+    {
+      name: 'react-components',
+      testDir: './apps/react/src/components',
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: galleryUrl,
+        serviceWorkers: 'block',
+      },
+    },
+  ],
+  webServer: {
+    command: 'npm run dev --workspace @veci-reto/react -- --host 127.0.0.1 --port 5173',
+    url: galleryUrl,
+    reuseExistingServer: !process.env.CI,
+  },
+});

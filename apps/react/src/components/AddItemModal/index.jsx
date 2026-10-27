@@ -1,9 +1,9 @@
 // @ts-check
 
 import { useRef, useState } from 'react';
-import Button from './ui/Button.jsx';
-import Input from './ui/Input.jsx';
-import Modal from './ui/Modal.jsx';
+import Button from '../ui/Button';
+import TextInput from '../ui/TextInput';
+import Modal from '../ui/Modal';
 
 /**
  * @typedef {{
@@ -50,7 +50,7 @@ function AddItemModal({ onAdd, onClose }) {
         <label className="sr-only" htmlFor="new-item">
           Add item to list
         </label>
-        <Input
+        <TextInput
           id="new-item"
           onChange={(event) => {
             setText(event.target.value);

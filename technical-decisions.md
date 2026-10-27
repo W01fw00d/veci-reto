@@ -87,7 +87,8 @@ Al no especificarse cómo gestionar la calidad del código, se opta por solucion
 - Oxlint para linting del código (especialmente útil si hubiera varios desarrolladores trabajando en el proyecto).
 - Playwright para tests de componente y tests e2e
   (e2e enfocado a cubrir la funcionalidad completa de Frontend, sin incluir backend ya que este proyecto no lo incorpora).
-- Vitest para tests unitarios de las funciones lógicas en javascript.
+- Se usaría Vitest para tests unitarios de las funciones lógicas en javascript
+  (en esta prueba no ha sido necesario implementar ninguna función de este tipo, por lo que se ha prescindido de tests unitarios).
 - En un proyecto real, donde tuviéramos un entorno de protección, diseñaríamos un pipeline de CI/CD.
   Por ejemplo, esta pipeline incluiría pasos para realizar una nueva release
   consistentes en que todos los tests, los checks de lint y ts-checks fueran positivos.
