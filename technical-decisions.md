@@ -37,6 +37,6 @@
 Al no especificarse cómo gestionar la calidad del código, se opta por soluciones ampliamente usadas en el ecosistema FE moderno:
 
 - Oxlint para linting del código.
-- Playwright para tests de componente y tests e2e.
+- Playwright para tests de componente y tests e2e (e2e enfocado a cubrir la funcionalidad completa de Frontend, sin incluir backend ya que este proyecto no lo incorpora).
 - Vitest para tests unitarios de las funciones lógicas en javascript.
 - En un proyecto real, donde tuviéramos un entorno de protección, diseñaríamos un pipeline de CI/CD. Por ejemplo, esta pipeline incluiría pasos para realizar una nueva release que todos los tests y los checks de lint fueran positivos.
