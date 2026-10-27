@@ -5,12 +5,14 @@
 - Con el objetivo de simplificar, se ha implementado la función de borrado tal y como se especificaba en el enunciado. Sin embargo, en un proyecto real sería recomendable añadir un mensaje de confirmación cuando el usuario hace doble click en una cadena de texto, pues podría no ser obvio que esa acción provoca el borrado de datos. En todo caso, al disponer de una función de deshacer, se reduce el riesgo de que el usuario pierda datos accidentalmente.
 - Si se han borrado todos los elementos de la lista, se muestra un mensaje de "No saved items found".
 
+- Internacionalización: Se asume que la aplicación solo necesita mostrarse en un único lenguaje: inglés. Por simplificar, en esta prueba se han mantenido las etiquetas directamente entre los tags de html. En el mundo real, si nos anticiparamos y supiéramos que la aplicación deberá mostrarse en diferentes idiomas en un futuro, ya comenzaríamos a crear ficheros json u objetos js que contuvieran las etiquetas traducibles, de manera que más adelante nos fuera sencillo integrar un sistema de internacionalización que tradujera las etiquetas de texto.
+
+## Diseño de la IU
+
 - Se añade un scroll vertical cuando la lista de cadenas de texto supera la altura especificada por el diseño, pues se asume que es una altura fija.
 - Se adapta el diseño para que sea responsive en pantallas de móvil o tablet
 - Se han mantenido los mismos textos "This is a technical proof" y el lorem ipsum de las etiquetas de la página que aparecía en los diseños. Alternativamente, podríamos por ejemplo substituir el lorem ipsum por instrucciones de como eliminar una cadena de texto.
 - El modal puede cerrarse con Escape o al pulsar fuera de su cuerpo. Al abrirse enfoca el campo y, al cerrarse, devuelve el foco al botón que lo abrió.
-
-- Internacionalización: Se asume que la aplicación solo necesita mostrarse en un único lenguaje: inglés. Por simplificar, en esta prueba se han mantenido las etiquetas directamente entre los tags de html. En el mundo real, si nos anticiparamos y supiéramos que la aplicación deberá mostrarse en diferentes idiomas en un futuro, ya comenzaríamos a crear ficheros json u objetos js que contuvieran las etiquetas traducibles, de manera que más adelante nos fuera sencillo integrar un sistema de internacionalización que tradujera las etiquetas de texto.
 
 ## Estructura del proyecto
 
@@ -31,8 +33,8 @@
 
 - Se utiliza tailwind.css para los estilos. Ya que el enunciado no especifica una solución concreta, hemos optado por usar un framework ampliamente usado en el ecosistema frontend.
 
-- Los estilos están duplicados, pues son los mismos para cada prueba (Vanilla Js y React). Se decide mantenerlos independientes para que las pruebas sean complementamente independientes entre sí, pues al ser dos soluciones diferentes para los mismo requerimientos, no necesitarán convivir en un proyecto real.
-- Si ambas pruebas tuvieran que convivir, se crearía un Sistema de Diseño minimalista con una librería de componentes que fuera agnóstica (por ejemplo una basada en web components nativos). De esta manera se podrían reutilizar los componentes ya estilizados en ambas pruebas e incluso en otras hipotéticas pruebas que usaran otras tecnologías de Frontend.
+- Los estilos están duplicados, pues son los mismos para cada prueba (Vanilla Js y React), aunque implementados en diferentes componentes. Se decide mantenerlos independientes para que las pruebas sean complementamente independientes entre sí, pues al ser dos soluciones diferentes para los mismos requerimientos, no necesitarán convivir en un proyecto real.
+- Si ambas pruebas tuvieran que convivir, se crearía un Sistema de Diseño minimalista con una librería de componentes que fuera agnóstica (por ejemplo una basada en web components nativos). De esta manera se podrían reutilizar los componentes ya estilizados en ambas pruebas e incluso en otras hipotéticas pruebas que usaran otros frameworks de Frontend como Vue.js.
 
 ## Calidad del código
 
