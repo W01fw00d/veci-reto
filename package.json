@@ -7,10 +7,12 @@
   "scripts": {
     "dev:vanilla": "npm run dev --workspace @veci-reto/vanilla",
     "dev:react": "npm run dev --workspace @veci-reto/react",
+    "test:components": "playwright test --project=react-components",
     "lint": "npm run lint --workspaces",
     "build": "npm run build --workspaces"
   },
   "devDependencies": {
+    "@playwright/test": "^1.64.1",
     "@tailwindcss/vite": "^4.3.3",
     "oxlint": "^1.90.0",
     "tailwindcss": "^4.3.3",

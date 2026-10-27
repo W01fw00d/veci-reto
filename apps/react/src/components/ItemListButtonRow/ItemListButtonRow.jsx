@@ -1,6 +1,6 @@
 // @ts-check
 
-import Button from './ui/Button.jsx';
+import Button from '../ui/Button/Button.jsx';
 
 /**
  * @typedef {{
