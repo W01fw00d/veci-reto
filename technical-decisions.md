@@ -6,8 +6,10 @@
 
 - Se añade un scroll vertical cuando la lista de cadenas de texto supera la altura especificada por el diseño, pues se asume que es una altura fija.
 - Se adapta el diseño para que sea responsive en pantallas de móvil o tablet
-- Se han mantenido los mismos textos "This is a technical proof" y el lorem ipsum de las labels de la página que aparecía en los diseños. Alternativamente, podríamos por ejemplo substituir el lorem ipsum por instrucciones de como eliminar una cadena de texto.
+- Se han mantenido los mismos textos "This is a technical proof" y el lorem ipsum de las etiquetas de la página que aparecía en los diseños. Alternativamente, podríamos por ejemplo substituir el lorem ipsum por instrucciones de como eliminar una cadena de texto.
 - El modal puede cerrarse con Escape o al pulsar fuera de su cuerpo. Al abrirse enfoca el campo y, al cerrarse, devuelve el foco al botón que lo abrió.
+
+- Internacionalización: Se asume que la aplicación solo necesita mostrarse en un único lenguaje: inglés. Por simplificar, en esta prueba se han mantenido las etiquetas directamente entre los tags de html. En el mundo real, si nos anticiparamos y supiéramos que la aplicación deberá mostrarse en diferentes idiomas en un futuro, ya comenzaríamos a crear ficheros json u objetos js que contuvieran las etiquetas traducibles, de manera que más adelante nos fuera sencillo integrar un sistema de internacionalización que tradujera las etiquetas de texto.
 
 ## Estructura del proyecto
 
