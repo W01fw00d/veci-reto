@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 function Panel({ children, className = '', ...sectionProps }) {
   return (
     <section
@@ -8,5 +10,14 @@ function Panel({ children, className = '', ...sectionProps }) {
     </section>
   );
 }
+
+Panel.propTypes = {
+  'aria-labelledby': PropTypes.string,
+  'aria-modal': PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  onMouseDown: PropTypes.func,
+  role: PropTypes.string,
+};
 
 export default Panel;
