@@ -1,5 +1,4 @@
 import { useRef, useState } from 'react';
-import PropTypes from 'prop-types';
 import Button from './ui/Button.jsx';
 import Input from './ui/Input.jsx';
 import Modal from './ui/Modal.jsx';
@@ -77,10 +76,5 @@ function AddItemModal({ onAdd, onClose }) {
     </Modal>
   );
 }
-
-AddItemModal.propTypes = {
-  onAdd: PropTypes.func.isRequired,
-  onClose: PropTypes.func.isRequired,
-};
 
 export default AddItemModal;

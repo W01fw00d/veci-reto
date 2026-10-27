@@ -14,6 +14,4 @@ function AppHeader() {
   );
 }
 
-AppHeader.propTypes = {};
-
 export default AppHeader;

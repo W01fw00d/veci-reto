@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-import PropTypes from 'prop-types';
 import Panel from './Panel.jsx';
 
 function Modal({
@@ -49,15 +48,5 @@ function Modal({
     </div>
   );
 }
-
-Modal.propTypes = {
-  children: PropTypes.node.isRequired,
-  initialFocusRef: PropTypes.shape({
-    current: PropTypes.object,
-  }),
-  labelledBy: PropTypes.string.isRequired,
-  onClose: PropTypes.func.isRequired,
-  panelClassName: PropTypes.string,
-};
 
 export default Modal;
