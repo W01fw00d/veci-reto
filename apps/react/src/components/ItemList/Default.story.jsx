@@ -6,7 +6,7 @@ const items = [
   { id: 2, text: 'Second item' },
 ];
 
-export function Default() {
+export default function Default() {
   const [selectedId, setSelectedId] = useState(1);
 
   return (

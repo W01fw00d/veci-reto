@@ -1,7 +1,7 @@
 import { expect, test } from '@playwright/test';
 
 test('renders an accessible input and accepts text', async ({ mount }) => {
-  const component = await mount('components/ui/Input/Default', {
+  const component = await mount('components/ui/TextInput/Default', {
     label: 'Item name',
     placeholder: 'Enter an item',
   });

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import AddItemModal from '.';
 
-export function Default() {
+export default function Default() {
   const [addedItem, setAddedItem] = useState('');
   const [closed, setClosed] = useState(false);
 

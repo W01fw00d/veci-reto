@@ -2,7 +2,7 @@
 
 import { useRef, useState } from 'react';
 import Button from '../ui/Button';
-import Input from '../ui/Input';
+import TextInput from '../ui/TextInput';
 import Modal from '../ui/Modal';
 
 /**
@@ -50,7 +50,7 @@ function AddItemModal({ onAdd, onClose }) {
         <label className="sr-only" htmlFor="new-item">
           Add item to list
         </label>
-        <Input
+        <TextInput
           id="new-item"
           onChange={(event) => {
             setText(event.target.value);

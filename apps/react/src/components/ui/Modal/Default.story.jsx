@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Modal from '.';
 
-export function Default() {
+export default function Default() {
   const [closeCount, setCloseCount] = useState(0);
 
   return (

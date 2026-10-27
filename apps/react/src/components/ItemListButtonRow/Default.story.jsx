@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ItemListButtonRow from '.';
 
-export function Default({ canUndo = true, canDelete = true } = {}) {
+export default function Default({ canUndo = true, canDelete = true } = {}) {
   const [actions, setActions] = useState(/** @type {string[]} */([]));
   /** @param {string} action */
   const record = (action) => setActions((current) => [...current, action]);

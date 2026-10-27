@@ -7,7 +7,7 @@ import Button from '.';
  *   variant?: 'primary' | 'secondary' | 'icon' | 'listOption'
  * }} props
  */
-export function Default({ disabled = false, variant = 'primary' } = {}) {
+export default function Default({ disabled = false, variant = 'primary' } = {}) {
   const [clicks, setClicks] = useState(0);
 
   return (

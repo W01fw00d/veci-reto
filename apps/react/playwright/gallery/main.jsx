@@ -18,6 +18,15 @@ const storyPath = (file) => {
 };
 
 async function resolveStory(storyId) {
+  const directMatch = Object.keys(stories).find((candidate) =>
+    storyPath(candidate) === storyId || storyPath(candidate).endsWith(`/${storyId}`),
+  );
+
+  if (directMatch) {
+    const storyModule = await stories[directMatch]();
+    return storyModule.default;
+  }
+
   const separator = storyId.lastIndexOf('/');
   const path = storyId.slice(0, separator);
   const exportName = storyId.slice(separator + 1);

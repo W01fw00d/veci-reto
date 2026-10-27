@@ -1,5 +1,5 @@
 import AppHeader from '.';
 
-export function Default() {
+export default function Default() {
   return <AppHeader />;
 }
