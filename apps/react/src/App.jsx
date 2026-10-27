@@ -1,5 +1,6 @@
 import { useCallback, useRef, useState } from 'react';
 import AddItemModal from './components/AddItemModal.jsx';
+import Button from './components/Button.jsx';
 import ItemList from './components/ItemList.jsx';
 
 const initialItems = [
@@ -76,12 +77,11 @@ function App() {
         />
 
         <div className="mt-7 flex items-center gap-3">
-          <button
+          <Button
             aria-label="Undo last change"
-            className="flex h-12 w-[78px] items-center justify-center rounded-full border-2 border-[#a8b2ff] text-[#7b8cff] transition hover:bg-[#f1f3ff] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff] disabled:cursor-not-allowed disabled:opacity-60"
             disabled={history.length === 0}
             onClick={handleUndo}
-            type="button"
+            variant="icon"
           >
             <svg
               aria-hidden="true"
@@ -97,23 +97,22 @@ function App() {
                 strokeWidth="2"
               />
             </svg>
-          </button>
-          <button
-            className="h-12 min-w-[120px] rounded-full border-2 border-[#a8b2ff] px-7 text-sm font-medium text-[#7184ff] transition hover:bg-[#f1f3ff] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff] disabled:cursor-not-allowed disabled:opacity-45"
+          </Button>
+          <Button
+            className="min-w-[120px]"
             disabled={selectedId === null}
             onClick={handleDelete}
-            type="button"
+            variant="secondary"
           >
             DELETE
-          </button>
+          </Button>
           <div className="ml-auto flex items-center gap-2">
-            <button
-              className="h-12 min-w-[132px] rounded-full bg-[#394cff] px-8 text-sm font-medium text-white transition hover:bg-[#293ce8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff]"
+            <Button
               onClick={() => setIsAdding(true)}
-              type="button"
+              variant="primary"
             >
               ADD
-            </button>
+            </Button>
           </div>
         </div>
         {isAdding && (

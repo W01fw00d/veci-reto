@@ -1,3 +1,5 @@
+import Button from './Button.jsx';
+
 function ItemList({ items, selectedId, onSelect }) {
   return (
     <div
@@ -10,20 +12,18 @@ function ItemList({ items, selectedId, onSelect }) {
         const isSelected = selectedId === item.id;
 
         return (
-          <button
+          <Button
             aria-selected={isSelected}
-            className={`block min-h-[39px] w-full px-3 text-left text-[16px] transition-colors focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#4650ff] ${
-              isSelected
-                ? 'bg-[#394cff] text-white'
-                : 'text-[#666666] hover:bg-[#e9edff]'
-            }`}
+            className={isSelected
+              ? 'bg-[#394cff] text-white'
+              : 'text-[#666666] hover:bg-[#e9edff]'}
             key={item.id}
             onClick={() => onSelect(item.id)}
             role="option"
-            type="button"
+            variant="listOption"
           >
             {item.text}
-          </button>
+          </Button>
         );
       })}
     </div>

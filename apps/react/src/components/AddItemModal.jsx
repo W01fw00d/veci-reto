@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
+import Button from './Button.jsx';
 
 function AddItemModal({ onAdd, onClose }) {
   const [text, setText] = useState('');
@@ -81,19 +82,20 @@ function AddItemModal({ onAdd, onClose }) {
             </p>
           )}
           <div className="mt-6 flex justify-end gap-3">
-            <button
-              className="h-12 min-w-[132px] rounded-full bg-[#394cff] px-7 text-sm font-medium text-white transition hover:bg-[#293ce8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff]"
+            <Button
+              className="px-7"
               type="submit"
+              variant="primary"
             >
               ADD
-            </button>
-            <button
-              className="h-12 min-w-[122px] rounded-full border-2 border-[#a8b2ff] px-6 text-sm font-medium text-[#7184ff] transition hover:bg-[#f1f3ff] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff]"
+            </Button>
+            <Button
+              className="min-w-[122px] px-6"
               onClick={onClose}
-              type="button"
+              variant="secondary"
             >
               CANCEL
-            </button>
+            </Button>
           </div>
         </form>
       </section>
