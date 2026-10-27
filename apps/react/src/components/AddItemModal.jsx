@@ -1,6 +1,7 @@
 import { useRef, useState } from 'react';
-import Button from './Button.jsx';
-import Modal from './Modal.jsx';
+import Button from './ui/Button.jsx';
+import Input from './ui/Input.jsx';
+import Modal from './ui/Modal.jsx';
 
 function AddItemModal({ onAdd, onClose }) {
   const [text, setText] = useState('');
@@ -38,8 +39,7 @@ function AddItemModal({ onAdd, onClose }) {
         <label className="sr-only" htmlFor="new-item">
           Add item to list
         </label>
-        <input
-          className="h-[58px] w-full border border-[#dedede] bg-[#f7f7f7] px-4 text-base text-[#333333] outline-none transition placeholder:text-[#b5b5b5] focus:border-[#4650ff] focus:ring-2 focus:ring-[#4650ff]/20"
+        <Input
           id="new-item"
           onChange={(event) => {
             setText(event.target.value);

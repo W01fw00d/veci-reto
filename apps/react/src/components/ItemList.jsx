@@ -1,4 +1,4 @@
-import Button from './Button.jsx';
+import Button from './ui/Button.jsx';
 
 function ItemList({ items, selectedId, onSelect }) {
   return (

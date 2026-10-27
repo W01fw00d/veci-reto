@@ -1,8 +1,9 @@
 ## Features
 
 - El enunciado especifica que las cadenas de texto deben tener al menos 1 carácter de longitud. Al no especificarse un límite de máximo de caracteres, se opta por limitarlo a 1000 carácteres por motivos de escabilidad.
-- Se desactiva el botón de añadir una nueva cadena de texto cuando el contenido del input es 0. Si el contenido supera los 1000 caracteres, también de desactiva y se muestra un mensaje de error al usuario para explicarle la regla de validación.
+- El botón de añadir una nueva cadena de texto lanza un error que mustra en la interfaz cuando el contenido del input es 0. Si el contenido supera los 1000 caracteres, también muestra un mensaje de error al usuario, explicándole la regla de validación.
 - Con el objetivo de simplificar, se ha implementado la función de borrado tal y como se especificaba en el enunciado. Sin embargo, en un proyecto real sería recomendable añadir un mensaje de confirmación cuando el usuario hace doble click en una cadena de texto, pues podría no ser obvio que esa acción provoca el borrado de datos. En todo caso, al disponer de una función de deshacer, se reduce el riesgo de que el usuario pierda datos accidentalmente.
+- Si se han borrado todos los elementos de la lista, se muestra un mensaje de "No saved items found".
 
 - Se añade un scroll vertical cuando la lista de cadenas de texto supera la altura especificada por el diseño, pues se asume que es una altura fija.
 - Se adapta el diseño para que sea responsive en pantallas de móvil o tablet
@@ -25,7 +26,8 @@
 
 ## Arquitectura Frontend
 
-- Se utiliza JavaScript en ambas pruebas, pero en un proyecto real recomendaría utilizar Typescript por sus múltiples beneficios tales como el typado de variables.
+- Se utiliza JavaScript en ambas pruebas, pero en un proyecto real recomendaría utilizar Typescript por sus múltiples beneficios tales como el tipado de variables.
+- Como una solución enfocada a los componentes de React, usamos la librería prop-types para definir los tipos de variables que admiten los props de cada componente, siguiendo las recomendaciones modernas de desarrollo con React.
 
 - Se utiliza tailwind.css para los estilos. Ya que el enunciado no especifica una solución concreta, hemos optado por usar un framework ampliamente usado en el ecosistema frontend.
 

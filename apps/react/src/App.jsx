@@ -1,9 +1,9 @@
 import { useCallback, useRef, useState } from 'react';
 import AddItemModal from './components/AddItemModal.jsx';
-import Header from './components/Header.jsx';
+import AppHeader from './components/AppHeader.jsx';
 import ItemList from './components/ItemList.jsx';
 import ItemListButtonRow from './components/ItemListButtonRow.jsx';
-import Panel from './components/Panel.jsx';
+import Panel from './components/ui/Panel.jsx';
 
 const initialItems = [
   { id: 1, text: 'Item 1' },
@@ -60,7 +60,7 @@ function App() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(112deg,#a8c4ff_0%,#bfe9f4_100%)] p-4 sm:p-8">
       <Panel className="max-w-[860px] shadow-[0_8px_18px_rgba(54,91,129,0.18)] sm:px-10">
-        <Header />
+        <AppHeader />
 
         <ItemList
           items={items}

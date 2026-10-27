@@ -1,4 +1,4 @@
-function Header() {
+function AppHeader() {
   return (
     <header className="text-center">
       <h1 className="text-[30px] leading-tight font-normal tracking-tight text-[#333333] sm:text-[40px]">
@@ -14,4 +14,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default AppHeader;
