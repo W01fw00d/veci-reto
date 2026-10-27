@@ -1,0 +1,15 @@
+{
+  "name": "veci-reto",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:vanilla": "npm run dev --workspace @veci-reto/vanilla",
+    "dev:react": "npm run dev --workspace @veci-reto/react",
+    "build": "npm run build --workspaces"
+  },
+  "devDependencies": {
+    "vite": "^8.3.5"
+  }
+}
