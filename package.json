@@ -1,0 +1,19 @@
+{
+  "name": "veci-reto",
+  "private": true,
+  "workspaces": [
+    "apps/*"
+  ],
+  "scripts": {
+    "dev:vanilla": "npm run dev --workspace @veci-reto/vanilla",
+    "dev:react": "npm run dev --workspace @veci-reto/react",
+    "lint": "npm run lint --workspaces",
+    "build": "npm run build --workspaces"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "oxlint": "^1.90.0",
+    "tailwindcss": "^4.3.3",
+    "vite": "^8.3.5"
+  }
+}
