@@ -15,6 +15,8 @@ with two independent implementations: Vanilla JS and React.
 | Vanilla JS  | `apps/vanilla` | `npm run dev:vanilla` |
 | React       | `apps/react`   | `npm run dev:react`   |
 
-Install dependencies from the root directory with `npm install`. To build
-production versions of both applications, run `npm run build`.
-Run `npm run lint` to lint both applications with Oxlint.
+## Running this project
+
+- Install dependencies from the root directory with `npm install`.
+- To build production versions of both applications, run `npm run build`.
+- Run `npm run lint` to lint both applications with Oxlint.
