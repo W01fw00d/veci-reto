@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "lint": "oxlint src vite.config.js --react-plugin",
     "build": "vite build",
     "preview": "vite preview"
   },
