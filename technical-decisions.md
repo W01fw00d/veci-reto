@@ -89,7 +89,8 @@ Al no especificarse cómo gestionar la calidad del código, se opta por solucion
   (e2e enfocado a cubrir la funcionalidad completa de Frontend, sin incluir backend ya que este proyecto no lo incorpora).
 - Vitest para tests unitarios de las funciones lógicas en javascript.
 - En un proyecto real, donde tuviéramos un entorno de protección, diseñaríamos un pipeline de CI/CD.
-  Por ejemplo, esta pipeline incluiría pasos para realizar una nueva release que todos los tests y los checks de lint fueran positivos.
+  Por ejemplo, esta pipeline incluiría pasos para realizar una nueva release
+  consistentes en que todos los tests, los checks de lint y ts-checks fueran positivos.
 
 ## Seguridad del código
 
