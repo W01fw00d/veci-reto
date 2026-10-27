@@ -1,3 +1,5 @@
+// @ts-check
+
 import { useCallback, useRef, useState } from 'react';
 import AddItemModal from './components/AddItemModal.jsx';
 import AppHeader from './components/AppHeader.jsx';
@@ -5,6 +7,12 @@ import ItemList from './components/ItemList.jsx';
 import ItemListButtonRow from './components/ItemListButtonRow.jsx';
 import Panel from './components/ui/Panel.jsx';
 
+/**
+ * @typedef {{id: number, text: string}} Item
+ * @typedef {{items: Item[], selectedId: number | null}} HistoryEntry
+ */
+
+/** @type {Item[]} */
 const initialItems = [
   { id: 1, text: 'Item 1' },
   { id: 2, text: 'Item 2' },
@@ -14,8 +22,8 @@ const initialItems = [
 
 function App() {
   const [items, setItems] = useState(initialItems);
-  const [selectedId, setSelectedId] = useState(1);
-  const [history, setHistory] = useState([]);
+  const [selectedId, setSelectedId] = useState(/** @type {number | null} */(1));
+  const [history, setHistory] = useState(/** @type {HistoryEntry[]} */([]));
   const [isAdding, setIsAdding] = useState(false);
   const nextId = useRef(5);
 
@@ -30,6 +38,7 @@ function App() {
     ]);
   }
 
+  /** @param {string} text */
   function handleAdd(text) {
     const item = { id: nextId.current, text };
     nextId.current += 1;

@@ -1,6 +1,19 @@
+// @ts-check
+
 import { useEffect } from 'react';
 import Panel from './Panel.jsx';
 
+/**
+ * @typedef {{
+ *   children: import('react').ReactNode,
+ *   initialFocusRef?: import('react').RefObject<HTMLInputElement | null>,
+ *   labelledBy: string,
+ *   onClose: () => void,
+ *   panelClassName?: string
+ * }} ModalProps
+ */
+
+/** @param {ModalProps} props */
 function Modal({
   children,
   initialFocusRef,
@@ -12,6 +25,7 @@ function Modal({
     const previouslyFocusedElement = document.activeElement;
     initialFocusRef?.current?.focus();
 
+    /** @param {KeyboardEvent} event */
     function handleKeyDown(event) {
       if (event.key === 'Escape') {
         onClose();
@@ -22,10 +36,13 @@ function Modal({
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
-      previouslyFocusedElement?.focus();
+      if (previouslyFocusedElement instanceof HTMLElement) {
+        previouslyFocusedElement.focus();
+      }
     };
   }, [initialFocusRef, onClose]);
 
+  /** @param {import('react').MouseEvent<HTMLDivElement>} event */
   function handleBackdropClick(event) {
     if (event.target === event.currentTarget) {
       onClose();

@@ -1,3 +1,8 @@
+// @ts-check
+
+/** @typedef {import('react').ComponentPropsWithoutRef<'section'>} PanelProps */
+
+/** @param {PanelProps} props */
 function Panel({ children, className = '', ...sectionProps }) {
   return (
     <section

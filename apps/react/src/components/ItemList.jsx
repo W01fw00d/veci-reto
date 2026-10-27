@@ -1,5 +1,17 @@
+// @ts-check
+
 import Button from './ui/Button.jsx';
 
+/**
+ * @typedef {{id: number, text: string}} Item
+ * @typedef {{
+ *   items: Item[],
+ *   selectedId: number | null,
+ *   onSelect: (id: number) => void
+ * }} ItemListProps
+ */
+
+/** @param {ItemListProps} props */
 function ItemList({ items, selectedId, onSelect }) {
   return (
     <div

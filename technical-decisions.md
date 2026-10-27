@@ -54,9 +54,9 @@ En el mundo real, si nos anticiparamos y supiéramos que la aplicación deberá 
 
 - Se utiliza JavaScript en ambas pruebas,
   pero en un proyecto real recomendaría utilizar Typescript por sus múltiples beneficios tales como el tipado de variables.
-- Como una solución enfocada a los componentes de React, usamos la librería prop-types
-  para definir los tipos de variables que admiten los props de cada componente,
-  siguiendo las recomendaciones modernas de desarrollo con React.
+- En la prueba de React, usamos JSDoc junto con `@ts-check` para definir
+  y comprobar los tipos de los props y otras variables de los componentes sin dejar de usar JavaScript.
+- En la prueba de Vanilla JS se opta por no usar `@ts-check` para respetar la limitación de solo usar js puro.
 
 - Se utiliza tailwind.css para los estilos.
   Ya que el enunciado no especifica una solución concreta,
@@ -89,7 +89,8 @@ Al no especificarse cómo gestionar la calidad del código, se opta por solucion
   (e2e enfocado a cubrir la funcionalidad completa de Frontend, sin incluir backend ya que este proyecto no lo incorpora).
 - Vitest para tests unitarios de las funciones lógicas en javascript.
 - En un proyecto real, donde tuviéramos un entorno de protección, diseñaríamos un pipeline de CI/CD.
-  Por ejemplo, esta pipeline incluiría pasos para realizar una nueva release que todos los tests y los checks de lint fueran positivos.
+  Por ejemplo, esta pipeline incluiría pasos para realizar una nueva release
+  consistentes en que todos los tests, los checks de lint y ts-checks fueran positivos.
 
 ## Seguridad del código
 

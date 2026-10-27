@@ -1,5 +1,18 @@
+// @ts-check
+
 import Button from './ui/Button.jsx';
 
+/**
+ * @typedef {{
+ *   canUndo: boolean,
+ *   canDelete: boolean,
+ *   onUndo: () => void,
+ *   onDelete: () => void,
+ *   onAdd: () => void
+ * }} ItemListButtonRowProps
+ */
+
+/** @param {ItemListButtonRowProps} props */
 function ItemListButtonRow({
   canUndo,
   canDelete,

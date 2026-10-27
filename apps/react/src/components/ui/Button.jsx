@@ -1,3 +1,5 @@
+// @ts-check
+
 const variantClasses = {
   primary:
     'h-12 min-w-[132px] rounded-full bg-[#394cff] px-8 text-sm font-medium text-white hover:bg-[#293ce8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff]',
@@ -9,6 +11,13 @@ const variantClasses = {
     'block min-h-[39px] w-full px-3 text-left text-[16px] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#4650ff]',
 };
 
+/**
+ * @typedef {import('react').ButtonHTMLAttributes<HTMLButtonElement> & {
+ *   variant?: keyof typeof variantClasses
+ * }} ButtonProps
+ */
+
+/** @param {ButtonProps} props */
 function Button({
   children,
   className = '',
