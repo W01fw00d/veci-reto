@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import Button from './Button.jsx';
+import Panel from './Panel.jsx';
 
 function AddItemModal({ onAdd, onClose }) {
   const [text, setText] = useState('');
@@ -29,7 +30,7 @@ function AddItemModal({ onAdd, onClose }) {
     const itemText = text.trim();
 
     if (!itemText) {
-      setError('Write something before adding it.');
+      setError('Item must be at least 1 character long');
       inputRef.current?.focus();
       return;
     }
@@ -49,10 +50,10 @@ function AddItemModal({ onAdd, onClose }) {
       className="fixed inset-0 z-10 flex items-start justify-center overflow-y-auto bg-black/15 px-4 pt-[6vh] pb-8"
       onMouseDown={handleBackdropClick}
     >
-      <section
+      <Panel
         aria-labelledby="add-item-title"
         aria-modal="true"
-        className="w-full max-w-[668px] rounded-2xl bg-white px-6 py-8 shadow-[0_8px_24px_rgba(35,58,87,0.2)] sm:px-12 sm:py-11"
+        className="max-w-[668px] shadow-[0_8px_24px_rgba(35,58,87,0.2)] sm:px-12"
         role="dialog"
       >
         <form onSubmit={handleSubmit}>
@@ -98,7 +99,7 @@ function AddItemModal({ onAdd, onClose }) {
             </Button>
           </div>
         </form>
-      </section>
+      </Panel>
     </div>
   );
 }

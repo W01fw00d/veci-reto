@@ -2,6 +2,7 @@ import { useCallback, useRef, useState } from 'react';
 import AddItemModal from './components/AddItemModal.jsx';
 import Button from './components/Button.jsx';
 import ItemList from './components/ItemList.jsx';
+import Panel from './components/Panel.jsx';
 
 const initialItems = [
   { id: 1, text: 'Item 1' },
@@ -57,7 +58,7 @@ function App() {
 
   return (
     <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(112deg,#a8c4ff_0%,#bfe9f4_100%)] p-4 sm:p-8">
-      <section className="w-full max-w-[860px] rounded-2xl bg-white px-6 py-8 shadow-[0_8px_18px_rgba(54,91,129,0.18)] sm:px-10 sm:py-11">
+      <Panel className="max-w-[860px] shadow-[0_8px_18px_rgba(54,91,129,0.18)] sm:px-10">
         <header className="text-center">
           <h1 className="text-[30px] leading-tight font-normal tracking-tight text-[#333333] sm:text-[40px]">
             This is a technical proof
@@ -121,7 +122,7 @@ function App() {
             onClose={handleCloseAddModal}
           />
         )}
-      </section>
+      </Panel>
     </main>
   );
 }
