@@ -56,6 +56,7 @@ En el mundo real, si nos anticiparamos y supiéramos que la aplicación deberá 
   pero en un proyecto real recomendaría utilizar Typescript por sus múltiples beneficios tales como el tipado de variables.
 - En la prueba de React, usamos JSDoc junto con `@ts-check` para definir
   y comprobar los tipos de los props y otras variables de los componentes sin dejar de usar JavaScript.
+- En la prueba de Vanilla JS se opta por no usar `@ts-check` para respetar la limitación de solo usar js puro.
 
 - Se utiliza tailwind.css para los estilos.
   Ya que el enunciado no especifica una solución concreta,
