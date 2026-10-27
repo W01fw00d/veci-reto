@@ -1,7 +1,7 @@
 # veci-reto
 
-Grupo Viajes El Corte Inglés (VECI) frontend challenge, set up as a monorepo
-with two independent implementations: Vanilla JS and React.
+Grupo Viajes El Corte Inglés (VECI) frontend challenge,
+set up as a monorepo with two independent implementations: Vanilla JS and React.
 
 ## Requirements
 
@@ -20,3 +20,9 @@ with two independent implementations: Vanilla JS and React.
 - Install dependencies from the root directory with `npm install`.
 - To build production versions of both applications, run `npm run build`.
 - Run `npm run lint` to lint both applications with Oxlint.
+
+## About
+
+`challenge-instructions.md` contains a copy of the requirements for this challenge.
+
+`technical-decisions.md` contains an explanation of the main decisions taken while implementing this project.
