@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 const variantClasses = {
   primary:
     'h-12 min-w-[132px] rounded-full bg-[#394cff] px-8 text-sm font-medium text-white hover:bg-[#293ce8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff]',
@@ -26,5 +28,17 @@ function Button({
     </button>
   );
 }
+
+Button.propTypes = {
+  'aria-label': PropTypes.string,
+  'aria-selected': PropTypes.bool,
+  children: PropTypes.node.isRequired,
+  className: PropTypes.string,
+  disabled: PropTypes.bool,
+  onClick: PropTypes.func,
+  role: PropTypes.string,
+  type: PropTypes.string,
+  variant: PropTypes.oneOf(Object.keys(variantClasses)),
+};
 
 export default Button;

@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Button from './ui/Button.jsx';
 
 function ItemList({ items, selectedId, onSelect }) {
@@ -30,5 +31,17 @@ function ItemList({ items, selectedId, onSelect }) {
     </div>
   );
 }
+
+ItemList.propTypes = {
+  items: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+    }),
+  ).isRequired,
+  onSelect: PropTypes.func.isRequired,
+  selectedId: PropTypes.oneOfType([PropTypes.number, PropTypes.oneOf([null])])
+    .isRequired,
+};
 
 export default ItemList;

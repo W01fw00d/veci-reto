@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import Button from './ui/Button.jsx';
 
 function ItemListButtonRow({
@@ -51,5 +52,13 @@ function ItemListButtonRow({
     </div>
   );
 }
+
+ItemListButtonRow.propTypes = {
+  canUndo: PropTypes.bool.isRequired,
+  canDelete: PropTypes.bool.isRequired,
+  onUndo: PropTypes.func.isRequired,
+  onDelete: PropTypes.func.isRequired,
+  onAdd: PropTypes.func.isRequired,
+};
 
 export default ItemListButtonRow;
