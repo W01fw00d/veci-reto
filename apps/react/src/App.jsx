@@ -1,8 +1,8 @@
 import { useCallback, useRef, useState } from 'react';
 import AddItemModal from './components/AddItemModal.jsx';
-import Button from './components/Button.jsx';
 import Header from './components/Header.jsx';
 import ItemList from './components/ItemList.jsx';
+import ItemListButtonRow from './components/ItemListButtonRow.jsx';
 import Panel from './components/Panel.jsx';
 
 const initialItems = [
@@ -68,45 +68,14 @@ function App() {
           selectedId={selectedId}
         />
 
-        <div className="mt-7 flex items-center gap-3">
-          <Button
-            aria-label="Undo last change"
-            disabled={history.length === 0}
-            onClick={handleUndo}
-            variant="icon"
-          >
-            <svg
-              aria-hidden="true"
-              className="h-6 w-6"
-              fill="none"
-              viewBox="0 0 24 24"
-            >
-              <path
-                d="M9 10 5 6m0 0 4-4M5 6h7a7 7 0 1 1-6.2 10.2"
-                stroke="currentColor"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth="2"
-              />
-            </svg>
-          </Button>
-          <Button
-            className="min-w-[120px]"
-            disabled={selectedId === null}
-            onClick={handleDelete}
-            variant="secondary"
-          >
-            DELETE
-          </Button>
-          <div className="ml-auto flex items-center gap-2">
-            <Button
-              onClick={() => setIsAdding(true)}
-              variant="primary"
-            >
-              ADD
-            </Button>
-          </div>
-        </div>
+        <ItemListButtonRow
+          canDelete={selectedId !== null}
+          canUndo={history.length > 0}
+          onAdd={() => setIsAdding(true)}
+          onDelete={handleDelete}
+          onUndo={handleUndo}
+        />
+
         {isAdding && (
           <AddItemModal
             onAdd={handleAdd}
