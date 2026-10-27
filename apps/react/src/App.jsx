@@ -1,6 +1,7 @@
 import { useCallback, useRef, useState } from 'react';
 import AddItemModal from './components/AddItemModal.jsx';
 import Button from './components/Button.jsx';
+import Header from './components/Header.jsx';
 import ItemList from './components/ItemList.jsx';
 import Panel from './components/Panel.jsx';
 
@@ -59,17 +60,7 @@ function App() {
   return (
     <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(112deg,#a8c4ff_0%,#bfe9f4_100%)] p-4 sm:p-8">
       <Panel className="max-w-[860px] shadow-[0_8px_18px_rgba(54,91,129,0.18)] sm:px-10">
-        <header className="text-center">
-          <h1 className="text-[30px] leading-tight font-normal tracking-tight text-[#333333] sm:text-[40px]">
-            This is a technical proof
-          </h1>
-          <p className="mx-auto mt-3 max-w-[760px] text-[16px] leading-[1.55] text-[#777777] sm:text-[17px]">
-            Lorem ipsum dolor sit amet consectetur adipiscing elit mus primis
-            nec inceptos. Lacinia habitasse arcu molestie maecenas cursus quam
-            nunc, hendrerit posuere augue fames dictumst placerat porttitor,
-            dis mi pharetra vestibulum venenatis phasellus.
-          </p>
-        </header>
+        <Header />
 
         <ItemList
           items={items}
