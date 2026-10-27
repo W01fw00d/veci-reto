@@ -6,6 +6,7 @@
 
 - Se añade un scroll vertical cuando la lista de cadenas de texto supera la altura especificada por el diseño, pues se asume que es una altura fija.
 - Se adapta el diseño para que sea responsive en pantallas de móvil o tablet
+- Se han mantenido los mismos textos "This is a technical proof" y el lorem ipsum de las labels de la página que aparecía en los diseños. Alternativamente, podríamos por ejemplo substituir el lorem ipsum por instrucciones de como eliminar una cadena de texto.
 
 ## Estructura del proyecto
 
