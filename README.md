@@ -8,19 +8,24 @@ set up as a monorepo with two independent implementations: Vanilla JS and React.
 - Node.js 20.19+ (or 22.12+)
 - npm
 
-## Applications
-
-| Application | Path           | Command               |
-| ----------- | -------------- | --------------------- |
-| Vanilla JS  | `apps/vanilla` | `npm run dev:vanilla` |
-| React       | `apps/react`   | `npm run dev:react`   |
-
 ## Running this project
 
+On root:
+
 - Install dependencies from the root directory with `npm install`.
-- To build production versions of both applications, run `npm run build`.
-- Run `npm run lint` to lint both applications with Oxlint.
-- Run `npm run test:components` to run the React component tests in Playwright.
+- To build production versions of both apps, run `npm run build`.
+- Run `npm run lint` to lint both apps with Oxlint.
+
+| App        | Development Server    | Component Tests                 | End-to-End Tests |
+| ---------- | --------------------- | ------------------------------- | ---------------- |
+| React      | `npm run dev:react`   | `npm run test-components:react` | (none)           |
+| Vanilla JS | `npm run dev:vanilla` | (none)                          | (none)           |
+
+---
+
+On `apps/react`:
+
+- run `npm run check-types` to check types.
 
 ## About
 
