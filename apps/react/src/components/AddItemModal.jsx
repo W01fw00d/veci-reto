@@ -1,13 +1,24 @@
+// @ts-check
+
 import { useRef, useState } from 'react';
 import Button from './ui/Button.jsx';
 import Input from './ui/Input.jsx';
 import Modal from './ui/Modal.jsx';
 
+/**
+ * @typedef {{
+ *   onAdd: (text: string) => void,
+ *   onClose: () => void
+ * }} AddItemModalProps
+ */
+
+/** @param {AddItemModalProps} props */
 function AddItemModal({ onAdd, onClose }) {
   const [text, setText] = useState('');
   const [error, setError] = useState('');
-  const inputRef = useRef(null);
+  const inputRef = useRef(/** @type {HTMLInputElement | null} */(null));
 
+  /** @param {import('react').FormEvent<HTMLFormElement>} event */
   function handleSubmit(event) {
     event.preventDefault();
     const itemText = text.trim();

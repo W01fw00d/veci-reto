@@ -54,9 +54,8 @@ En el mundo real, si nos anticiparamos y supiéramos que la aplicación deberá 
 
 - Se utiliza JavaScript en ambas pruebas,
   pero en un proyecto real recomendaría utilizar Typescript por sus múltiples beneficios tales como el tipado de variables.
-- Como una solución enfocada a los componentes de React, usamos la librería prop-types
-  para definir los tipos de variables que admiten los props de cada componente,
-  siguiendo las recomendaciones modernas de desarrollo con React.
+- En la prueba de React, usamos JSDoc junto con `@ts-check` para definir
+  y comprobar los tipos de los props y otras variables de los componentes sin dejar de usar JavaScript.
 
 - Se utiliza tailwind.css para los estilos.
   Ya que el enunciado no especifica una solución concreta,
