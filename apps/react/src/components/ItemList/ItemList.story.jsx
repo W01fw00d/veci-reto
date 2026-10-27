@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ItemList from './ItemList.jsx';
+import ItemList from '.';
 
 const items = [
   { id: 1, text: 'First item' },

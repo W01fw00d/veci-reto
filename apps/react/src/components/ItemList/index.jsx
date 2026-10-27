@@ -1,6 +1,6 @@
 // @ts-check
 
-import Button from '../ui/Button/Button.jsx';
+import Button from '../ui/Button';
 
 /**
  * @typedef {{id: number, text: string}} Item

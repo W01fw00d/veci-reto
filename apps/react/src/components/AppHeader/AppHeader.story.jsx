@@ -1,4 +1,4 @@
-import AppHeader from './AppHeader.jsx';
+import AppHeader from '.';
 
 export function Default() {
   return <AppHeader />;

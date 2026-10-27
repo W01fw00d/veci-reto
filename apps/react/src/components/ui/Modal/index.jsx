@@ -1,7 +1,7 @@
 // @ts-check
 
 import { useEffect } from 'react';
-import Panel from '../Panel/Panel.jsx';
+import Panel from '../Panel';
 
 /**
  * @typedef {{

@@ -1,4 +1,4 @@
-import Input from './Input.jsx';
+import Input from '.';
 
 export function Default({ label = 'Example input', placeholder = 'Type here...' } = {}) {
   return (

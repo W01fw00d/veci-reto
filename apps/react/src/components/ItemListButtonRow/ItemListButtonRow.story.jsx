@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import ItemListButtonRow from './ItemListButtonRow.jsx';
+import ItemListButtonRow from '.';
 
 export function Default({ canUndo = true, canDelete = true } = {}) {
   const [actions, setActions] = useState(/** @type {string[]} */([]));

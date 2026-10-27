@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import AddItemModal from './AddItemModal.jsx';
+import AddItemModal from '.';
 
 export function Default() {
   const [addedItem, setAddedItem] = useState('');

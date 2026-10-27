@@ -1,9 +1,9 @@
 // @ts-check
 
 import { useRef, useState } from 'react';
-import Button from '../ui/Button/Button.jsx';
-import Input from '../ui/Input/Input.jsx';
-import Modal from '../ui/Modal/Modal.jsx';
+import Button from '../ui/Button';
+import Input from '../ui/Input';
+import Modal from '../ui/Modal';
 
 /**
  * @typedef {{

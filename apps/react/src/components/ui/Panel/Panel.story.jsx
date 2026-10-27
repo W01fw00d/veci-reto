@@ -1,4 +1,4 @@
-import Panel from './Panel.jsx';
+import Panel from '.';
 
 export function Default({ label = 'Example panel' } = {}) {
   return (
