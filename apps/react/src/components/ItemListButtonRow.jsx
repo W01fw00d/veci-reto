@@ -32,6 +32,7 @@ function ItemListButtonRow({
       </Button>
       <Button
         className="min-w-[120px]"
+        aria-label="Delete selected item"
         disabled={!canDelete}
         onClick={onDelete}
         variant="secondary"
@@ -39,7 +40,11 @@ function ItemListButtonRow({
         DELETE
       </Button>
       <div className="ml-auto flex items-center gap-2">
-        <Button onClick={onAdd} variant="primary">
+        <Button
+          aria-label="Open add item form"
+          onClick={onAdd}
+          variant="primary"
+        >
           ADD
         </Button>
       </div>

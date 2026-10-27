@@ -13,6 +13,7 @@ function ItemList({ items, selectedId, onSelect }) {
 
         return (
           <Button
+            aria-label={`Select ${item.text}`}
             aria-selected={isSelected}
             className={isSelected
               ? 'bg-[#394cff] text-white'

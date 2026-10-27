@@ -56,6 +56,7 @@ function AddItemModal({ onAdd, onClose }) {
         )}
         <div className="mt-6 flex justify-end gap-3">
           <Button
+            aria-label="Add item to list"
             className="px-7"
             type="submit"
             variant="primary"
@@ -63,6 +64,7 @@ function AddItemModal({ onAdd, onClose }) {
             ADD
           </Button>
           <Button
+            aria-label="Cancel adding item"
             className="min-w-[122px] px-6"
             onClick={onClose}
             variant="secondary"
