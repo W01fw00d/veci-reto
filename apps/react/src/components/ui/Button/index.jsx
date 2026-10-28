@@ -2,13 +2,13 @@
 
 const variantClasses = {
   primary:
-    'h-12 min-w-[132px] rounded-full bg-[#394cff] px-8 text-sm font-medium text-white hover:bg-[#293ce8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff]',
+    'h-[60px] min-w-[160px] rounded-full bg-[#324BFF] px-8 text-[16px] font-medium text-white hover:bg-[#263EE8] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#324BFF]',
   secondary:
-    'h-12 min-w-[120px] rounded-full border-2 border-[#a8b2ff] px-7 text-sm font-medium text-[#7184ff] hover:bg-[#f1f3ff] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff] disabled:opacity-45',
+    'h-[60px] min-w-[160px] rounded-full border-2 border-[#324BFF] px-7 text-[16px] font-medium text-[#324BFF] hover:bg-[#f1f3ff] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#324BFF] disabled:opacity-45',
   icon:
-    'flex h-12 w-[78px] items-center justify-center rounded-full border-2 border-[#a8b2ff] text-[#7b8cff] hover:bg-[#f1f3ff] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#4650ff] disabled:opacity-60',
+    'flex h-[60px] w-[100px] items-center justify-center rounded-full border-2 border-[#324BFF] text-[#324BFF] hover:bg-[#f1f3ff] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#324BFF] disabled:opacity-60',
   listOption:
-    'block min-h-[39px] w-full px-3 text-left text-[16px] focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#4650ff]',
+    'block min-h-[40px] w-full px-3 text-left text-[16px] font-medium focus-visible:outline-2 focus-visible:outline-offset-[-2px] focus-visible:outline-[#324BFF]',
 };
 
 /**

@@ -44,6 +44,35 @@ test('renders the initial list and supports multiple selection, deletion, and un
   await expect(undo).toBeDisabled();
 });
 
+test('preserves bottom spacing below the button row in a short viewport', async ({ page }) => {
+  await page.setViewportSize({ width: 750, height: 480 });
+
+  const panel = page.locator('main > section');
+  const buttonRow = page.getByRole('button', { name: 'Undo last change' }).locator('..');
+  const panelBox = await panel.boundingBox();
+  const buttonRowBox = await buttonRow.boundingBox();
+
+  if (!panelBox || !buttonRowBox) {
+    throw new Error('The panel and button row must be visible');
+  }
+
+  expect(panelBox.y + panelBox.height - buttonRowBox.y - buttonRowBox.height).toBeGreaterThanOrEqual(48);
+});
+
+test('aligns the wrapped add button with delete on mobile', async ({ page }) => {
+  await page.setViewportSize({ width: 375, height: 677 });
+
+  const deleteBox = await page.getByRole('button', { name: 'Delete selected items' }).boundingBox();
+  const addBox = await page.getByRole('button', { name: 'Open add item form' }).boundingBox();
+
+  if (!deleteBox || !addBox) {
+    throw new Error('The add and delete buttons must be visible');
+  }
+
+  expect(addBox.y).toBeGreaterThan(deleteBox.y);
+  expect(Math.abs(addBox.x - deleteBox.x)).toBeLessThanOrEqual(1);
+});
+
 test('rejects empty items and adds trimmed text as the selected item', async ({ page }) => {
   await page.getByRole('button', { name: 'Open add item form' }).click();
 

@@ -51,7 +51,7 @@ function Modal({
 
   return (
     <div
-      className="fixed inset-0 z-10 flex items-start justify-center overflow-y-auto bg-black/15 px-4 pt-[6vh] pb-8"
+      className="fixed inset-0 z-10 flex items-start justify-center overflow-y-auto bg-black/10 px-4 pt-[50px] pb-8"
       onMouseDown={handleBackdropClick}
     >
       <Panel

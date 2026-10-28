@@ -78,8 +78,8 @@ function App() {
   }
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(112deg,#a8c4ff_0%,#bfe9f4_100%)] p-4 sm:p-8">
-      <Panel className="max-w-[860px] shadow-[0_8px_18px_rgba(54,91,129,0.18)] sm:px-10">
+    <main className="flex min-h-screen items-center justify-center bg-[linear-gradient(112deg,#A1C4FD_0%,#C2E9FB_100%)] p-4 font-sans text-[#333333] sm:p-8">
+      <Panel className="box-border h-[577px] w-full max-w-[900px] rounded-[20px] p-[50px] shadow-[0_5px_12px_#0000001f] max-sm:h-auto max-sm:min-h-[577px] max-sm:px-6 max-sm:py-8 [@media(max-height:600px)]:h-auto">
         <AppHeader />
 
         <ItemList

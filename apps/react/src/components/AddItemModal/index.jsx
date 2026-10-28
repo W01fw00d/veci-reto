@@ -46,11 +46,11 @@ function AddItemModal({ onAdd, onClose }) {
       initialFocusRef={inputRef}
       labelledBy="add-item-title"
       onClose={onClose}
-      panelClassName="max-w-[668px] shadow-[0_8px_24px_rgba(35,58,87,0.2)] sm:px-12"
+      panelClassName="box-border h-[276px] w-full max-w-[700px] rounded-[20px] p-[50px] pb-[44px] shadow-[0_10px_24px_#0000001f] max-sm:h-auto max-sm:min-h-[276px] max-sm:p-8 max-sm:px-6"
     >
       <form onSubmit={handleSubmit}>
         <h2
-          className="mb-4 text-[17px] font-normal text-[#666666]"
+          className="mb-5 text-[18px] leading-[22px] font-normal text-[#333333]"
           id="add-item-title"
         >
           Add item to list
@@ -73,10 +73,10 @@ function AddItemModal({ onAdd, onClose }) {
             {error}
           </p>
         )}
-        <div className="mt-6 flex justify-end gap-3">
+        <div className="mt-5 flex justify-end gap-5">
           <Button
             aria-label="Add item to list"
-            className="px-7"
+            className="px-7 max-sm:min-w-0 max-sm:flex-1"
             type="submit"
             variant="primary"
           >
@@ -84,7 +84,7 @@ function AddItemModal({ onAdd, onClose }) {
           </Button>
           <Button
             aria-label="Cancel adding item"
-            className="min-w-[122px] px-6"
+            className="min-w-[160px] px-6 max-sm:min-w-0 max-sm:flex-1"
             onClick={onClose}
             variant="secondary"
           >
