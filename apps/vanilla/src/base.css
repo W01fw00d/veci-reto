@@ -1,0 +1,41 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+}
+
+body {
+  color: #333;
+  font-family: Montserrat, sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+item-list-app,
+app-header,
+item-list,
+item-list-actions,
+item-list-button-row,
+add-item-modal,
+ui-panel,
+ui-modal,
+ui-text-input,
+ui-button {
+  display: block;
+}

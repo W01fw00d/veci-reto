@@ -33,6 +33,15 @@ export default defineConfig({
         serviceWorkers: 'block',
       },
     },
+    {
+      name: 'vanilla-components',
+      testDir: './apps/vanilla/src',
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://127.0.0.1:5174/',
+        serviceWorkers: 'block',
+      },
+    },
   ],
   webServer: [
     {

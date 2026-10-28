@@ -48,7 +48,7 @@ test('renders the initial list and supports multiple selection, deletion, and un
 test('preserves bottom spacing below the button row in a short viewport', async ({ page }) => {
   await page.setViewportSize({ width: 750, height: 480 });
 
-  const panel = page.locator('main > section');
+  const panel = page.locator('main section');
   const buttonRow = page.getByRole('button', { name: 'Undo last change' }).locator('..');
   const panelBox = await panel.boundingBox();
   const buttonRowBox = await buttonRow.boundingBox();

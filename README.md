@@ -16,12 +16,13 @@ On root:
 - To build production versions of both apps, run `npm run build`.
 - Run `npm run lint` to lint both apps with Oxlint.
 
-| App        | Development Server    | Run Component and End-To-End Tests |
-| ---------- | --------------------- | ---------------------------------- |
-| React      | `npm run dev:react`   | `npm run test:react                |
-| Vanilla JS | `npm run dev:vanilla` | `npm run test:vanilla`             |
+| App        | Development Server    | Component Tests                                             | End-to-End Tests                                     |
+| ---------- | --------------------- | ----------------------------------------------------------- | ---------------------------------------------------- |
+| React      | `npm run dev:react`   | `npm run test-components --workspace @veci-reto/react`      | `npm run test-e2e --workspace @veci-reto/react`     |
+| Vanilla JS | `npm run dev:vanilla` | `npm run test-components --workspace @veci-reto/vanilla`    | `npm run test-e2e --workspace @veci-reto/vanilla`   |
 
-(The shared end-to-end scenarios in `tests/e2e/App.spec.js` run against both implementations).
+The shared end-to-end scenarios in `tests/e2e/App.spec.js` run against both implementations.
+Run all tests for either app with `npm run test:react` or `npm run test:vanilla`.
 
 ## About
 

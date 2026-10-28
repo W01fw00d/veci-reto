@@ -1,0 +1,23 @@
+.app-panel {
+  width: 100%;
+  max-width: 900px;
+  height: 577px;
+  padding: 50px;
+  border-radius: 20px;
+  background: #fff;
+  box-shadow: 0 5px 12px #0000001f;
+}
+
+@media (max-width: 639px) {
+  .app-panel {
+    height: auto;
+    min-height: 577px;
+    padding: 32px 24px;
+  }
+}
+
+@media (max-height: 600px) {
+  .app-panel {
+    height: auto;
+  }
+}
