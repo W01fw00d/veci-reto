@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import ItemList from '.';
 
-const items = [
-  { id: 1, text: 'First item' },
-  { id: 2, text: 'Second item' },
-];
-
 export default function Default() {
+  const [items, setItems] = useState([
+    { id: 1, text: 'First item' },
+    { id: 2, text: 'Second item' },
+  ]);
   const [selectedIds, setSelectedIds] = useState([1]);
 
   /** @param {number} id */
@@ -18,10 +17,19 @@ export default function Default() {
     );
   }
 
+  /** @param {number} id */
+  function deleteItem(id) {
+    setItems((currentItems) => currentItems.filter((item) => item.id !== id));
+    setSelectedIds((currentSelectedIds) =>
+      currentSelectedIds.filter((selectedId) => selectedId !== id),
+    );
+  }
+
   return (
     <>
       <ItemList
         items={items}
+        onDeleteItem={deleteItem}
         onToggleSelection={toggleSelection}
         selectedIds={selectedIds}
       />

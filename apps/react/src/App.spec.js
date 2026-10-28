@@ -167,3 +167,31 @@ test('deletes only the selected items and disables delete when selection is empt
   await expect(options.nth(1)).toHaveAttribute('aria-selected', 'false');
   await expect(deleteButton).toBeDisabled();
 });
+
+test('deletes an item on double click and supports undo', async ({ page }) => {
+  const options = page.getByRole('option');
+  const itemToDelete = page.getByRole('option', { name: 'Select Item 2' });
+  const undo = page.getByRole('button', { name: 'Undo last change' });
+
+  await itemToDelete.dblclick();
+
+  await expect(options).toHaveText(['Item 1', 'Item 3', 'Item 4']);
+  await expect(page.getByRole('option', { name: 'Select Item 1' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  await expect(undo).toBeEnabled();
+
+  await undo.click();
+
+  await expect(options).toHaveText(['Item 1', 'Item 2', 'Item 3', 'Item 4']);
+  await expect(page.getByRole('option', { name: 'Select Item 1' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  await expect(page.getByRole('option', { name: 'Select Item 2' })).toHaveAttribute(
+    'aria-selected',
+    'false',
+  );
+  await expect(undo).toBeDisabled();
+});

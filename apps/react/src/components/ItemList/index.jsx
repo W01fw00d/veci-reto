@@ -7,12 +7,13 @@ import Button from '../ui/Button';
  * @typedef {{
  *   items: Item[],
  *   selectedIds: number[],
- *   onToggleSelection: (id: number) => void
+ *   onToggleSelection: (id: number) => void,
+ *   onDeleteItem: (id: number) => void
  * }} ItemListProps
  */
 
 /** @param {ItemListProps} props */
-function ItemList({ items, selectedIds, onToggleSelection }) {
+function ItemList({ items, selectedIds, onToggleSelection, onDeleteItem }) {
   return (
     <div
       aria-label="Items"
@@ -32,6 +33,7 @@ function ItemList({ items, selectedIds, onToggleSelection }) {
               : 'text-[#666666] hover:bg-[#e9edff]'}
             key={item.id}
             onClick={() => onToggleSelection(item.id)}
+            onDoubleClick={() => onDeleteItem(item.id)}
             role="option"
             variant="listOption"
           >

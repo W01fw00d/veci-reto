@@ -27,3 +27,15 @@ test('supports adding and removing multiple selected items', async ({ mount }) =
   await expect(component.getByTestId('selected-ids')).toHaveValue('[]');
   await expect(secondItem).toHaveAttribute('aria-selected', 'false');
 });
+
+test('deletes an item on double click and removes it from the selection', async ({ mount }) => {
+  const component = await mount('components/ItemList/Default');
+  const firstItem = component.getByRole('option', { name: 'Select First item' });
+  const secondItem = component.getByRole('option', { name: 'Select Second item' });
+
+  await secondItem.dblclick();
+
+  await expect(component.getByRole('option')).toHaveCount(1);
+  await expect(firstItem).toBeVisible();
+  await expect(component.getByTestId('selected-ids')).toHaveValue('[1]');
+});
