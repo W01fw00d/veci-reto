@@ -12,8 +12,8 @@
     "test-components:ui": "playwright test --config ../../playwright.config.mjs --project=react-components --ui",
     "lint": "oxlint src vite.config.js --react-plugin",
     "build": "vite build",
-    "check-types": "tsc --project jsconfig.json",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check-types": "tsc --project jsconfig.json"
   },
   "dependencies": {
     "react": "^19.3.1",

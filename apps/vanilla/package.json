@@ -7,7 +7,9 @@
     "dev": "vite",
     "test": "playwright test --config ../../playwright.config.mjs --project=vanilla-e2e --project=vanilla-components",
     "test-e2e": "playwright test --config ../../playwright.config.mjs --project=vanilla-e2e",
+    "test-e2e:ui": "playwright test --config ../../playwright.config.mjs --project=vanilla-e2e --ui",
     "test-components": "playwright test --config ../../playwright.config.mjs --project=vanilla-components",
+    "test-components:ui": "playwright test --config ../../playwright.config.mjs --project=vanilla-components --ui",
     "lint": "oxlint src vite.config.js",
     "build": "vite build",
     "preview": "vite preview"

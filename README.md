@@ -23,6 +23,9 @@ On root:
 
 The shared end-to-end scenarios in `tests/e2e/App.spec.js` run against both implementations.
 
+Both apps use the shared favicon and locally hosted Montserrat font assets from
+the root `public/` directory.
+
 ## About
 
 `challenge-instructions.md` contains a copy of the requirements for this challenge.

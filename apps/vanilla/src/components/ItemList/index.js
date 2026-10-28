@@ -66,6 +66,7 @@ class ItemList extends HTMLElement {
         ariaLabel: `Select ${item.text}`,
         className: `list-option${selected ? ' is-selected' : ''}`,
         text: item.text,
+        variant: 'listOption',
       });
       option.setAttribute('aria-selected', String(selected));
       option.dataset.itemId = String(item.id);

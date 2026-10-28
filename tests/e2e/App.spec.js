@@ -45,6 +45,32 @@ test('renders the initial list and supports multiple selection, deletion, and un
   await expect(undo).toBeDisabled();
 });
 
+test('matches the target typography, list row, and action sizes', async ({ page }) => {
+  await expect(page.locator('body')).toHaveCSS('line-height', '24px');
+  await expect(page.locator('main')).toHaveCSS('padding-top', '32px');
+  await expect(page.getByRole('option').first()).toHaveCSS('height', '40px');
+  await expect(page.getByRole('option').first()).toHaveCSS('border-radius', '0px');
+  await expect(page.getByRole('button', { name: 'Undo last change' })).toHaveCSS('height', '60px');
+  await expect(page.getByRole('button', { name: 'Delete selected items' })).toHaveCSS('height', '60px');
+});
+
+test('loads Montserrat and the shared favicon from local assets', async ({ page }) => {
+  const fontReady = await page.evaluate(async () => {
+    await document.fonts.load('400 16px Montserrat');
+    await document.fonts.load('500 16px Montserrat');
+    return document.fonts.check('400 16px Montserrat') && document.fonts.check('500 16px Montserrat');
+  });
+  expect(fontReady).toBe(true);
+
+  const fontResponse = await page.request.get('/fonts/montserrat-latin.woff2');
+  expect(fontResponse.ok()).toBe(true);
+  expect(fontResponse.headers()['content-type']).toContain('font/woff2');
+
+  const faviconResponse = await page.request.get('/favicon.svg');
+  expect(faviconResponse.ok()).toBe(true);
+  expect(faviconResponse.headers()['content-type']).toContain('image/svg+xml');
+});
+
 test('preserves bottom spacing below the button row in a short viewport', async ({ page }) => {
   await page.setViewportSize({ width: 750, height: 480 });
 
