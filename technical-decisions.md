@@ -12,6 +12,16 @@
   En todo caso, al disponer de una función de deshacer, se reduce el riesgo de que el usuario pierda datos accidentalmente.
 - Si se han borrado todos los elementos de la lista, se muestra un mensaje de "No saved items found".
 
+## Requerimientos opcionales implementados
+
+Se han implementado todos los requerimentos obligatorios según las instrucciones del reto. También todos los Extras:
+
+- Poder seleccionar múltiples items para poder borrarlos a la vez
+- Que el usuario pueda eliminar elementos de la lista haciendo doble click sobre el ítem que se desea eliminar.
+- Permitir al usuario deshacer, como mínimo, el último cambio realizado.
+  Se ha creado un historial de cambios ilimitado, que permite al usuario deshacer todos sus cambios en esta sesión.
+- Realizada implementación en Vanilla JS.
+
 ## Diseño de la interfaz de usuario
 
 - Se añade un scroll vertical cuando la lista de cadenas de texto supera la altura especificada por el diseño,

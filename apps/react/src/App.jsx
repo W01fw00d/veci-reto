@@ -57,6 +57,17 @@ function App() {
     setSelectedIds([]);
   }
 
+  /** @param {number} id */
+  function handleDeleteItem(id) {
+    if (!items.some((item) => item.id === id)) return;
+
+    rememberCurrentState();
+    setItems((currentItems) => currentItems.filter((item) => item.id !== id));
+    setSelectedIds((currentSelectedIds) =>
+      currentSelectedIds.filter((selectedId) => selectedId !== id),
+    );
+  }
+
   function handleUndo() {
     if (history.length === 0) return;
 
@@ -73,6 +84,7 @@ function App() {
 
         <ItemList
           items={items}
+          onDeleteItem={handleDeleteItem}
           onToggleSelection={(id) => {
             setSelectedIds((currentSelectedIds) =>
               currentSelectedIds.includes(id)
