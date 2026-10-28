@@ -103,13 +103,11 @@ Al no especificarse cómo gestionar la calidad del código, se opta por solucion
   Por ejemplo, esta pipeline incluiría pasos para realizar una nueva release
   consistentes en que todos los tests, los checks de lint y ts-checks fueran positivos.
 
-## Seguridad del código
+## Seguridad y observabilidad del código
 
 Las características de esta aplicación realmente no lo requieren, debido a su simplicidad;
 pero se detalla a continuación algunas recomendaciones generales.
 
-- Se sanitiza el texto introducido por el usuario en el input, para evitar posibles inyecciones de sql.
-  Esta medida preventiva permitiría evitar enviar payloads peligrosos a la Base de Datos desde el Frontend.
 - En un escenario real, se recomendaría usar herramientas de monitorización de errores
   y de rendimiento de la aplicación en entornos de producción,
   como por ejemplo `Sentry` o `Datadog`.
