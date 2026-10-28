@@ -14,6 +14,28 @@ test('focuses the input and rejects an empty item', async ({ mount }) => {
   await expect(input).toBeFocused();
 });
 
+test('rejects items longer than 1000 characters', async ({ mount }) => {
+  const component = await mount('components/AddItemModal/Default');
+  const input = component.getByRole('textbox', { name: 'Add item to list' });
+
+  await input.fill('a'.repeat(1001));
+  await component.getByRole('button', { name: 'Add item to list' }).click();
+
+  await expect(component.getByRole('alert')).toHaveText(
+    'Item must be no more than 1000 characters long',
+  );
+  await expect(component.getByTestId('added-item')).toHaveValue('');
+  await expect(component.getByTestId('closed')).toHaveValue('false');
+  await expect(input).toBeFocused();
+
+  await input.fill('a'.repeat(1000));
+  await expect(component.getByRole('alert')).toHaveCount(0);
+  await component.getByRole('button', { name: 'Add item to list' }).click();
+
+  await expect(component.getByTestId('added-item')).toHaveValue('a'.repeat(1000));
+  await expect(component.getByTestId('closed')).toHaveValue('true');
+});
+
 test('trims and adds a valid item before closing', async ({ mount }) => {
   const component = await mount('components/AddItemModal/Default');
 

@@ -13,8 +13,8 @@ Se han implementado todos los requerimentos obligatorios según las instruccione
 ## Funciones, escenarios y flujos
 
 - El enunciado especifica que las cadenas de texto deben tener al menos 1 carácter de longitud.
-  Al no especificarse un límite de máximo de caracteres, se opta por limitarlo a 1000 carácteres por motivos de escabilidad;
-  y pensando en la defición de este campo en un modelo de base de datos.
+  Al no especificarse un límite de máximo de caracteres, se opta por limitarlo a 1000 carácteres por motivos de definir más claramente el producto;
+  y pensando en la defición de este campo en un potencial modelo de base de datos.
 - El botón de añadir una nueva cadena de texto lanza un error que muestra en la interfaz cuando el contenido del input es 0.
   Si el contenido supera los 1000 caracteres, también muestra un mensaje de error al usuario, explicándole la regla de validación.
 - Con el objetivo de simplificar, se ha implementado la función de borrado tal y como se especificaba en el enunciado.

@@ -5,6 +5,8 @@ import Button from '../ui/Button';
 import TextInput from '../ui/TextInput';
 import Modal from '../ui/Modal';
 
+const MAX_ITEM_LENGTH = 1000;
+
 /**
  * @typedef {{
  *   onAdd: (text: string) => void,
@@ -25,6 +27,12 @@ function AddItemModal({ onAdd, onClose }) {
 
     if (!itemText) {
       setError('Item must be at least 1 character long');
+      inputRef.current?.focus();
+      return;
+    }
+
+    if (itemText.length > MAX_ITEM_LENGTH) {
+      setError(`Item must be no more than ${MAX_ITEM_LENGTH} characters long`);
       inputRef.current?.focus();
       return;
     }
