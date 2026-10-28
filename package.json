@@ -7,6 +7,7 @@
   "scripts": {
     "dev:vanilla": "npm run dev --workspace @veci-reto/vanilla",
     "dev:react": "npm run dev --workspace @veci-reto/react",
+    "test:react": "playwright test --project=react-e2e --project=react-components",
     "test-e2e:react": "playwright test --project=react-e2e",
     "test-e2e:react:ui": "playwright test --project=react-e2e --ui",
     "test-components:react": "playwright test --project=react-components",

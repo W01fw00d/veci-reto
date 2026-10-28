@@ -39,3 +39,13 @@ test('deletes an item on double click and removes it from the selection', async 
   await expect(firstItem).toBeVisible();
   await expect(component.getByTestId('selected-ids')).toHaveValue('[1]');
 });
+
+test('shows an empty state after deleting the last item', async ({ mount }) => {
+  const component = await mount('components/ItemList/Default');
+
+  await component.getByRole('option', { name: 'Select First item' }).dblclick();
+  await component.getByRole('option', { name: 'Select Second item' }).dblclick();
+
+  await expect(component.getByRole('status')).toHaveText('No saved items found');
+  await expect(component.getByRole('listbox')).toHaveCount(0);
+});
