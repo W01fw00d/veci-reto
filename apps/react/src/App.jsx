@@ -1,10 +1,9 @@
 // @ts-check
 
-import { useCallback, useRef, useState } from 'react';
-import AddItemModal from './components/AddItemModal';
+import { useRef, useState } from 'react';
 import AppHeader from './components/AppHeader';
+import ItemListActions from './components/ItemListActions';
 import ItemList from './components/ItemList';
-import ItemListButtonRow from './components/ItemListButtonRow';
 import Panel from './components/ui/Panel';
 
 /**
@@ -37,12 +36,7 @@ function App() {
   const [items, setItems] = useState(initialItems);
   const [selectedIds, setSelectedIds] = useState([1]);
   const [history, setHistory] = useState(/** @type {HistoryEntry[]} */([]));
-  const [isAdding, setIsAdding] = useState(false);
   const nextId = useRef(5);
-
-  const handleCloseAddModal = useCallback(() => {
-    setIsAdding(false);
-  }, []);
 
   function rememberCurrentState() {
     setHistory((previousHistory) => [
@@ -108,20 +102,13 @@ function App() {
           selectedIds={selectedIds}
         />
 
-        <ItemListButtonRow
+        <ItemListActions
           canDelete={selectedIds.length > 0}
           canUndo={history.length > 0}
-          onAdd={() => setIsAdding(true)}
+          onAdd={handleAdd}
           onDelete={handleDelete}
           onUndo={handleUndo}
         />
-
-        {isAdding && (
-          <AddItemModal
-            onAdd={handleAdd}
-            onClose={handleCloseAddModal}
-          />
-        )}
       </Panel>
     </main>
   );
