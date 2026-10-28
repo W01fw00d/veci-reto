@@ -6,6 +6,12 @@ import TextInput from '../ui/TextInput';
 import Modal from '../ui/Modal';
 
 const MAX_ITEM_LENGTH = 1000;
+const modalPanelClasses = [
+  'box-border h-[276px] w-full max-w-[700px]',
+  'rounded-[20px] p-[50px] pb-[44px]',
+  'shadow-[0_10px_24px_#0000001f]',
+  'max-sm:h-auto max-sm:min-h-[276px] max-sm:p-8 max-sm:px-6',
+].join(' ');
 
 /**
  * @typedef {{
@@ -46,7 +52,7 @@ function AddItemModal({ onAdd, onClose }) {
       initialFocusRef={inputRef}
       labelledBy="add-item-title"
       onClose={onClose}
-      panelClassName="box-border h-[276px] w-full max-w-[700px] rounded-[20px] p-[50px] pb-[44px] shadow-[0_10px_24px_#0000001f] max-sm:h-auto max-sm:min-h-[276px] max-sm:p-8 max-sm:px-6"
+      panelClassName={modalPanelClasses}
     >
       <form onSubmit={handleSubmit}>
         <h2
