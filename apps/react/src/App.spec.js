@@ -195,3 +195,27 @@ test('deletes an item on double click and supports undo', async ({ page }) => {
   );
   await expect(undo).toBeDisabled();
 });
+
+test('shows the empty state until a new item is added', async ({ page }) => {
+  const deleteButton = page.getByRole('button', { name: 'Delete selected items' });
+  const emptyState = page.getByRole('status');
+
+  for (const item of ['Item 2', 'Item 3', 'Item 4']) {
+    await page.getByRole('option', { name: `Select ${item}` }).click();
+  }
+  await deleteButton.click();
+
+  await expect(page.getByRole('option')).toHaveCount(0);
+  await expect(emptyState).toHaveText('No saved items found');
+
+  await page.getByRole('button', { name: 'Open add item form' }).click();
+  await page.getByRole('button', { name: 'Cancel adding item' }).click();
+  await expect(emptyState).toHaveText('No saved items found');
+
+  await page.getByRole('button', { name: 'Open add item form' }).click();
+  await page.getByRole('textbox', { name: 'Add item to list' }).fill('New item');
+  await page.getByRole('button', { name: 'Add item to list' }).click();
+
+  await expect(page.getByRole('option')).toHaveText(['New item']);
+  await expect(emptyState).toHaveCount(0);
+});
