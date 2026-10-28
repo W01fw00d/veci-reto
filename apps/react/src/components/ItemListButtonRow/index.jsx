@@ -1,6 +1,7 @@
 // @ts-check
 
 import Button from '../ui/Button';
+import { memo } from 'react';
 
 /**
  * @typedef {{
@@ -65,4 +66,4 @@ function ItemListButtonRow({
   );
 }
 
-export default ItemListButtonRow;
+export default memo(ItemListButtonRow);
