@@ -4,7 +4,7 @@ test('enables actions and invokes their callbacks', async ({ mount }) => {
   const component = await mount('components/ItemListButtonRow/Default');
 
   const undo = component.getByRole('button', { name: 'Undo last change' });
-  const deleteButton = component.getByRole('button', { name: 'Delete selected item' });
+  const deleteButton = component.getByRole('button', { name: 'Delete selected items' });
   const add = component.getByRole('button', { name: 'Open add item form' });
 
   await expect(undo).toBeEnabled();
@@ -29,7 +29,7 @@ test('disables undo and delete when unavailable', async ({ mount }) => {
     component.getByRole('button', { name: 'Undo last change' }),
   ).toBeDisabled();
   await expect(
-    component.getByRole('button', { name: 'Delete selected item' }),
+    component.getByRole('button', { name: 'Delete selected items' }),
   ).toBeDisabled();
   await expect(
     component.getByRole('button', { name: 'Open add item form' }),

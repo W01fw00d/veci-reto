@@ -9,7 +9,7 @@ import Panel from './components/ui/Panel';
 
 /**
  * @typedef {{id: number, text: string}} Item
- * @typedef {{items: Item[], selectedId: number | null}} HistoryEntry
+ * @typedef {{items: Item[], selectedIds: number[]}} HistoryEntry
  */
 
 /** @type {Item[]} */
@@ -22,7 +22,7 @@ const initialItems = [
 
 function App() {
   const [items, setItems] = useState(initialItems);
-  const [selectedId, setSelectedId] = useState(/** @type {number | null} */(1));
+  const [selectedIds, setSelectedIds] = useState([1]);
   const [history, setHistory] = useState(/** @type {HistoryEntry[]} */([]));
   const [isAdding, setIsAdding] = useState(false);
   const nextId = useRef(5);
@@ -34,7 +34,7 @@ function App() {
   function rememberCurrentState() {
     setHistory((previousHistory) => [
       ...previousHistory,
-      { items, selectedId },
+      { items, selectedIds },
     ]);
   }
 
@@ -44,17 +44,17 @@ function App() {
     nextId.current += 1;
     rememberCurrentState();
     setItems((currentItems) => [...currentItems, item]);
-    setSelectedId(item.id);
+    setSelectedIds([item.id]);
   }
 
   function handleDelete() {
-    if (selectedId === null) return;
+    if (selectedIds.length === 0) return;
 
     rememberCurrentState();
     setItems((currentItems) =>
-      currentItems.filter((item) => item.id !== selectedId),
+      currentItems.filter((item) => !selectedIds.includes(item.id)),
     );
-    setSelectedId(null);
+    setSelectedIds([]);
   }
 
   function handleUndo() {
@@ -62,7 +62,7 @@ function App() {
 
     const previousState = history[history.length - 1];
     setItems(previousState.items);
-    setSelectedId(previousState.selectedId);
+    setSelectedIds(previousState.selectedIds);
     setHistory((previousHistory) => previousHistory.slice(0, -1));
   }
 
@@ -73,12 +73,18 @@ function App() {
 
         <ItemList
           items={items}
-          onSelect={setSelectedId}
-          selectedId={selectedId}
+          onToggleSelection={(id) => {
+            setSelectedIds((currentSelectedIds) =>
+              currentSelectedIds.includes(id)
+                ? currentSelectedIds.filter((selectedId) => selectedId !== id)
+                : [...currentSelectedIds, id],
+            );
+          }}
+          selectedIds={selectedIds}
         />
 
         <ItemListButtonRow
-          canDelete={selectedId !== null}
+          canDelete={selectedIds.length > 0}
           canUndo={history.length > 0}
           onAdd={() => setIsAdding(true)}
           onDelete={handleDelete}

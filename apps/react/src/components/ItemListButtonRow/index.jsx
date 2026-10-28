@@ -45,7 +45,7 @@ function ItemListButtonRow({
       </Button>
       <Button
         className="min-w-[120px]"
-        aria-label="Delete selected item"
+        aria-label="Delete selected items"
         disabled={!canDelete}
         onClick={onDelete}
         variant="secondary"
