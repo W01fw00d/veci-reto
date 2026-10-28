@@ -2,19 +2,19 @@
 
 ## Requerimientos opcionales implementados
 
-Se han implementado todos los requerimentos obligatorios según las instrucciones del reto. También todos los Extras:
+Se han implementado todos los requerimentos obligatorios según las instrucciones del reto. También todos los extras:
 
 - Poder seleccionar múltiples items para poder borrarlos a la vez.
-- Que el usuario pueda eliminar elementos de la lista haciendo doble click sobre el ítem que se desea eliminar.
+- Que el usuario pueda eliminar elementos de la lista haciendo doble click sobre el ítem que desea eliminar.
 - Permitir al usuario deshacer, como mínimo, el último cambio realizado.
-  Se ha creado un historial de cambios ilimitado, que permite al usuario deshacer todos sus cambios en esta sesión.
+  Se ha creado un historial de cambios ilimitado, que permite al usuario deshacer todos sus cambios en esta sesión,
+  mediante un stack de snapshots.
 - Realizada implementación en Vanilla JS.
 
 ## Funciones, escenarios y flujos
 
 - El enunciado especifica que las cadenas de texto deben tener al menos 1 carácter de longitud.
-  Al no especificarse un límite de máximo de caracteres, se opta por limitarlo a 1000 carácteres por motivos de definir más claramente el producto;
-  y pensando en la defición de este campo en un potencial modelo de base de datos.
+  Al no especificarse un límite de máximo de caracteres, se opta por limitarlo a 1000 carácteres para definir claramente el producto, simulando un escenario real; y pensando en la defición de este campo en un potencial modelo de base de datos.
 - El botón de añadir una nueva cadena de texto lanza un error que muestra en la interfaz cuando el contenido del input es 0.
   Si el contenido supera los 1000 caracteres, también muestra un mensaje de error al usuario, explicándole la regla de validación.
 - Con el objetivo de simplificar, se ha implementado la función de borrado tal y como se especificaba en el enunciado.
@@ -27,28 +27,28 @@ Se han implementado todos los requerimentos obligatorios según las instruccione
 - Se añade un scroll vertical cuando la lista de cadenas de texto supera la altura especificada por el diseño,
   pues se asume que es una altura fija.
 - Se adapta el diseño para que sea responsive en pantallas de móvil o tablet.
-- Se han mantenido los mismos textos "This is a technical proof" y el "lorem ipsum" de las etiquetas de la página que aparecía en los diseños. Alternativamente, podríamos por ejemplo substituir el "lorem ipsum" por instrucciones de como eliminar una cadena de texto.
+- Se han mantenido los mismos textos "This is a technical proof" y el "lorem ipsum" de las etiquetas de la página que aparecía en los diseños. Alternativamente, podríamos por ejemplo substituir el "lorem ipsum" por instrucciones de como eliminar una cadena de texto mediante un click doble.
 - El modal puede cerrarse con Escape o al pulsar fuera del panel.
   Al abrirse enfoca el campo y, al cerrarse, devuelve el foco al botón que lo abrió.
 
 ## Internacionalización
 
 - Se asume que la aplicación solo necesita mostrarse en un único lenguaje: inglés.
-- Por simplificar, en esta prueba se han mantenido las etiquetas directamente entre los tags de html.
-- En el mundo real, si nos anticiparamos y supiéramos que la aplicación deberá mostrarse en diferentes idiomas en un futuro, ya comenzaríamos a crear ficheros json u objetos js que contuvieran las etiquetas traducibles, de manera que más adelante nos fuera sencillo integrar un sistema de internacionalización que tradujera las etiquetas de texto.
+- Para simplificar, en esta prueba se han mantenido las etiquetas directamente entre los tags de html.
+- En el mundo real, si nos anticipáramos y supiéramos que la aplicación deberá mostrarse en diferentes idiomas en un futuro, ya se comenzarían a crear ficheros json u objetos js que contuvieran las etiquetas traducibles, de manera que más adelante fuera sencillo integrar un sistema de internacionalización que tradujera las etiquetas de texto.
 
 ## Accesibilidad
 
-- Uso de `aria-labels` en componentes interaccionables que describan la acción que realizan.
-- Uso de html tags descriptivos que orienten sobre la disposición de elementos en la página.
+- Se usan `aria-labels` en componentes interaccionables que describan la acción que realizan.
+- Se usan html tags descriptivos que orienten sobre la disposición de elementos en la página.
 - Herramientas como Google Lighthouse permiten realizar un informe de la accesibilidad de la aplicación y detectar mejoras.
 
 # Requerimientos técnicos
 
 ## Estructura del proyecto
 
-- Se estructura el proyecto como un monorepo que incluye ambas soluciones requeridas: Vanilla Js y React.
-- Se utiliza vite para simplificar el desarrollo y el scaffolding del proyecto.
+- Se estructura el proyecto como un monorepo que incluye ambas soluciones requeridas: Vanilla JS y React.
+- Se utiliza `vite` para simplificar el desarrollo y el scaffolding del proyecto.
 
 ## Persistencia de datos
 
@@ -63,17 +63,17 @@ Se han implementado todos los requerimentos obligatorios según las instruccione
 ## Arquitectura Frontend
 
 - Se utiliza JavaScript en ambas pruebas,
-  pero en un proyecto real recomendaría utilizar Typescript por sus múltiples beneficios tales como el tipado de variables.
-- En la prueba de React, usamos JSDoc junto con `@ts-check` para definir
+  pero en un proyecto real se recomendaría utilizar `Typescript` por sus múltiples beneficios tales como el tipado de variables.
+- En la prueba de React, se usa `JSDoc` junto con `@ts-check` para definir
   y comprobar los tipos de los props y otras variables de los componentes sin dejar de usar JavaScript.
 - En la prueba de Vanilla JS se opta por no usar `@ts-check` para respetar la limitación de solo usar JavaScript puro.
 
 - Se utiliza Tailwind CSS para los estilos de React.
-  La versión Vanilla utiliza CSS propio para conservar los estilos sin depender de un framework de componentes.
+  La versión Vanilla JS utiliza CSS propio para conservar los estilos sin depender de ninguna dependencia externa.
 
 - Los estilos se mantienen independientes para que las dos soluciones puedan
   desarrollarse y ejecutarse por separado.
-- La versión Vanilla implementa sus componentes con Web Components nativos,
+- La versión Vanilla JS implementa sus componentes con Web Components nativos,
   manteniendo el comportamiento encapsulado y sin dependencias de UI externas.
 
 ## Rendimiento
@@ -87,17 +87,18 @@ Se han implementado todos los requerimentos obligatorios según las instruccione
 
 ## Calidad del código
 
-Al no especificarse cómo gestionar la calidad del código, se opta por soluciones ampliamente usadas en el ecosistema FE moderno:
+Al no especificarse en el enunciado cómo gestionar la calidad del código,
+se opta por soluciones ampliamente usadas en el ecosistema FE moderno:
 
 - `Oxlint` para linting del código (especialmente útil si hubiera varios desarrolladores trabajando en el proyecto).
 - `Playwright` para tests de componente y tests e2e.
-  Los escenarios e2e compartidos se ejecutan contra React y Vanilla;
-  las pruebas de componente actuales verifican las implementaciones React.
+  Los escenarios e2e compartidos se ejecutan contra React y Vanilla JS;
+  las pruebas de componente son equivalentes también en ambas apps.
 - Se usaría `Vitest` para tests unitarios de las funciones lógicas en JavaScript
   (en esta prueba no ha sido necesario implementar ninguna función de este tipo, por lo que se ha prescindido de tests unitarios).
-- En un proyecto real, donde tuviéramos un entorno de protección, diseñaríamos un pipeline de CI/CD.
+- En un proyecto real, donde tuviéramos un entorno de producción, diseñaríamos un pipeline de CI/CD.
   Por ejemplo, esta pipeline incluiría pasos para realizar una nueva release
-  consistentes en que todos los tests, los checks de lint y ts-checks fueran positivos.
+  consistentes en que todos los tests, los checks de `lint` y `ts-checks` fueran positivos.
 
 ## Seguridad y observabilidad del código
 
@@ -107,5 +108,5 @@ pero se detalla a continuación algunas recomendaciones generales.
 - En un escenario real, se recomendaría usar herramientas de monitorización de errores
   y de rendimiento de la aplicación en entornos de producción,
   como por ejemplo `Sentry` o `Datadog`.
-- Dockerizar el proyecto (introducirlo en un contenedor) sería útil para garantizar que se ejecuta de igual manera en todos los entornos.
-  Esto sería especialmente útil si necesitáramos usar variables de entorno para guardar secretos que no deban guardarse en el código fuente por contener información sensible de ser explotada por potenciales atacantes.
+- Dockerizar el proyecto (introducirlo en un contenedor mediante `Docker`) sería útil para garantizar que se ejecuta con el mismo contexto en todos los entornos.
+  Esto sería especialmente útil si necesitáramos usar variables de entorno para guardar secretos que no deban exponerse en el código fuente, por contener información sensible de ser explotada por potenciales atacantes.
