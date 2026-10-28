@@ -7,6 +7,8 @@
   "scripts": {
     "dev:vanilla": "npm run dev --workspace @veci-reto/vanilla",
     "dev:react": "npm run dev --workspace @veci-reto/react",
+    "test-e2e:react": "playwright test --project=react-e2e",
+    "test-e2e:react:ui": "playwright test --project=react-e2e --ui",
     "test-components:react": "playwright test --project=react-components",
     "test-components:react:ui": "playwright test --project=react-components --ui",
     "lint": "npm run lint --workspaces",

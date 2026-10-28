@@ -5,6 +5,16 @@ const galleryUrl = 'http://127.0.0.1:5173/playwright/gallery/index.html';
 export default defineConfig({
   projects: [
     {
+      name: 'react-e2e',
+      testDir: './apps/react/src',
+      testMatch: 'App.spec.js',
+      use: {
+        ...devices['Desktop Chrome'],
+        baseURL: 'http://127.0.0.1:5173/',
+        serviceWorkers: 'block',
+      },
+    },
+    {
       name: 'react-components',
       testDir: './apps/react/src/components',
       use: {
