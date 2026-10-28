@@ -5,10 +5,15 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test": "playwright test --config ../../playwright.config.mjs --project=react-e2e --project=react-components",
+    "test-e2e": "playwright test --config ../../playwright.config.mjs --project=react-e2e",
+    "test-e2e:ui": "playwright test --config ../../playwright.config.mjs --project=react-e2e --ui",
+    "test-components": "playwright test --config ../../playwright.config.mjs --project=react-components",
+    "test-components:ui": "playwright test --config ../../playwright.config.mjs --project=react-components --ui",
     "lint": "oxlint src vite.config.js --react-plugin",
     "build": "vite build",
-    "check-types": "tsc --project jsconfig.json",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "check-types": "tsc --project jsconfig.json"
   },
   "dependencies": {
     "react": "^19.3.1",
@@ -17,7 +22,9 @@
   "devDependencies": {
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
+    "@tailwindcss/vite": "^4.3.3",
     "@vitejs/plugin-react": "^6.1.2",
+    "tailwindcss": "^4.3.3",
     "typescript": "^7.0.2"
   }
 }

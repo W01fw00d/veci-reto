@@ -1,1 +1,2 @@
-import './style.css';
+import './base.css';
+import './components/App';
