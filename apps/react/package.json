@@ -5,6 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test": "playwright test --config ../../playwright.config.mjs --project=react-e2e --project=react-components",
+    "test-e2e": "playwright test --config ../../playwright.config.mjs --project=react-e2e",
+    "test-e2e:ui": "playwright test --config ../../playwright.config.mjs --project=react-e2e --ui",
+    "test-components": "playwright test --config ../../playwright.config.mjs --project=react-components",
+    "test-components:ui": "playwright test --config ../../playwright.config.mjs --project=react-components --ui",
     "lint": "oxlint src vite.config.js --react-plugin",
     "build": "vite build",
     "check-types": "tsc --project jsconfig.json",

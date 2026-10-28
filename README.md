@@ -16,16 +16,12 @@ On root:
 - To build production versions of both apps, run `npm run build`.
 - Run `npm run lint` to lint both apps with Oxlint.
 
-| App        | Development Server    | Component Tests                 | End-to-End Tests         |
-| ---------- | --------------------- | ------------------------------- | ------------------------ |
-| React      | `npm run dev:react`   | `npm run test-components:react` | `npm run test-e2e:react` |
-| Vanilla JS | `npm run dev:vanilla` | (none)                          | (none)                   |
+| App        | Development Server    | Run Component and End-To-End Tests |
+| ---------- | --------------------- | ---------------------------------- |
+| React      | `npm run dev:react`   | `npm run test:react                |
+| Vanilla JS | `npm run dev:vanilla` | `npm run test:vanilla`             |
 
----
-
-On `apps/react`:
-
-- run `npm run check-types` to check types.
+(The shared end-to-end scenarios in `tests/e2e/App.spec.js` run against both implementations).
 
 ## About
 

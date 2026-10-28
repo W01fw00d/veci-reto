@@ -1,3 +1,4 @@
+// Shared end-to-end scenarios run against both app projects.
 import { expect, test } from '@playwright/test';
 
 test.beforeEach(async ({ page }) => {
@@ -108,6 +109,29 @@ test('rejects empty items and adds trimmed text as the selected item', async ({ 
     'true',
   );
   await expect(page.getByRole('button', { name: 'Undo last change' })).toBeEnabled();
+});
+
+test('rejects items over 1000 characters and accepts the maximum length', async ({ page }) => {
+  await page.getByRole('button', { name: 'Open add item form' }).click();
+
+  const dialog = page.getByRole('dialog', { name: 'Add item to list' });
+  const input = dialog.getByRole('textbox', { name: 'Add item to list' });
+  const submit = dialog.getByRole('button', { name: 'Add item to list' });
+
+  await input.fill('a'.repeat(1001));
+  await submit.click();
+  await expect(dialog.getByRole('alert')).toHaveText(
+    'Item must be no more than 1000 characters long',
+  );
+  await expect(dialog).toHaveCount(1);
+  await expect(input).toBeFocused();
+
+  await input.fill('a'.repeat(1000));
+  await expect(dialog.getByRole('alert')).toHaveCount(0);
+  await submit.click();
+
+  await expect(dialog).toHaveCount(0);
+  await expect(page.getByRole('option').last()).toHaveText('a'.repeat(1000));
 });
 
 test('closes the add dialog with cancel, Escape, or a backdrop click without adding an item', async ({ page }) => {

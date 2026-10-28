@@ -68,18 +68,13 @@ Se han implementado todos los requerimentos obligatorios según las instruccione
   y comprobar los tipos de los props y otras variables de los componentes sin dejar de usar JavaScript.
 - En la prueba de Vanilla JS se opta por no usar `@ts-check` para respetar la limitación de solo usar JavaScript puro.
 
-- Se utiliza `tailwind.css` para los estilos.
-  Ya que el enunciado no especifica una solución concreta,
-  hemos optado por usar un framework ampliamente usado en el ecosistema frontend.
+- Se utiliza Tailwind CSS para los estilos de React.
+  La versión Vanilla utiliza CSS propio para conservar los estilos sin depender de un framework de componentes.
 
-- Los estilos están duplicados, pues son los mismos para cada prueba (Vanilla Js y React),
-  aunque implementados en diferentes componentes.
-  Se decide mantenerlos independientes para que las pruebas sean complementamente independientes entre sí,
-  pues al ser dos soluciones diferentes para los mismos requerimientos, no necesitarán convivir en un proyecto real.
-- Si ambas pruebas tuvieran que convivir, se crearía un Sistema de Diseño minimalista con una librería de componentes que fuera agnóstica
-  (por ejemplo una basada en web components nativos).
-  De esta manera se podrían reutilizar los componentes ya estilizados en ambas pruebas
-  e incluso en otras hipotéticas pruebas que usaran otros frameworks de Frontend como `Vue.js`.
+- Los estilos se mantienen independientes para que las dos soluciones puedan
+  desarrollarse y ejecutarse por separado.
+- La versión Vanilla implementa sus componentes con Web Components nativos,
+  manteniendo el comportamiento encapsulado y sin dependencias de UI externas.
 
 ## Rendimiento
 
@@ -95,8 +90,9 @@ Se han implementado todos los requerimentos obligatorios según las instruccione
 Al no especificarse cómo gestionar la calidad del código, se opta por soluciones ampliamente usadas en el ecosistema FE moderno:
 
 - `Oxlint` para linting del código (especialmente útil si hubiera varios desarrolladores trabajando en el proyecto).
-- `Playwright` para tests de componente y tests e2e
-  (e2e enfocado a cubrir la funcionalidad completa de Frontend, sin incluir backend ya que este proyecto no lo incorpora).
+- `Playwright` para tests de componente y tests e2e.
+  Los escenarios e2e compartidos se ejecutan contra React y Vanilla;
+  las pruebas de componente actuales verifican las implementaciones React.
 - Se usaría `Vitest` para tests unitarios de las funciones lógicas en JavaScript
   (en esta prueba no ha sido necesario implementar ninguna función de este tipo, por lo que se ha prescindido de tests unitarios).
 - En un proyecto real, donde tuviéramos un entorno de protección, diseñaríamos un pipeline de CI/CD.

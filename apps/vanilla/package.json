@@ -5,6 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "test": "playwright test --config ../../playwright.config.mjs --project=vanilla-e2e",
+    "test-e2e": "playwright test --config ../../playwright.config.mjs --project=vanilla-e2e",
     "lint": "oxlint src vite.config.js",
     "build": "vite build",
     "preview": "vite preview"
