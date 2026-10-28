@@ -7,16 +7,25 @@ const items = [
 ];
 
 export default function Default() {
-  const [selectedId, setSelectedId] = useState(1);
+  const [selectedIds, setSelectedIds] = useState([1]);
+
+  /** @param {number} id */
+  function toggleSelection(id) {
+    setSelectedIds((currentSelectedIds) =>
+      currentSelectedIds.includes(id)
+        ? currentSelectedIds.filter((selectedId) => selectedId !== id)
+        : [...currentSelectedIds, id],
+    );
+  }
 
   return (
     <>
       <ItemList
         items={items}
-        onSelect={setSelectedId}
-        selectedId={selectedId}
+        onToggleSelection={toggleSelection}
+        selectedIds={selectedIds}
       />
-      <input data-testid="selected-id" readOnly value={String(selectedId)} />
+      <input data-testid="selected-ids" readOnly value={JSON.stringify(selectedIds)} />
     </>
   );
 }

@@ -4,10 +4,10 @@ test.beforeEach(async ({ page }) => {
   await page.goto('/');
 });
 
-test('renders the initial list and supports selection, deletion, and undo', async ({ page }) => {
+test('renders the initial list and supports multiple selection, deletion, and undo', async ({ page }) => {
   const options = page.getByRole('option');
   const undo = page.getByRole('button', { name: 'Undo last change' });
-  const deleteButton = page.getByRole('button', { name: 'Delete selected item' });
+  const deleteButton = page.getByRole('button', { name: 'Delete selected items' });
 
   await expect(page.getByRole('heading', { name: 'This is a technical proof' })).toBeVisible();
   await expect(options).toHaveText(['Item 1', 'Item 2', 'Item 3', 'Item 4']);
@@ -22,17 +22,21 @@ test('renders the initial list and supports selection, deletion, and undo', asyn
   );
   await expect(page.getByRole('option', { name: 'Select Item 1' })).toHaveAttribute(
     'aria-selected',
-    'false',
+    'true',
   );
 
   await deleteButton.click();
-  await expect(options).toHaveText(['Item 1', 'Item 2', 'Item 4']);
+  await expect(options).toHaveText(['Item 2', 'Item 4']);
   await expect(deleteButton).toBeDisabled();
   await expect(undo).toBeEnabled();
 
   await undo.click();
   await expect(options).toHaveText(['Item 1', 'Item 2', 'Item 3', 'Item 4']);
   await expect(page.getByRole('option', { name: 'Select Item 3' })).toHaveAttribute(
+    'aria-selected',
+    'true',
+  );
+  await expect(page.getByRole('option', { name: 'Select Item 1' })).toHaveAttribute(
     'aria-selected',
     'true',
   );
@@ -102,7 +106,7 @@ test('closes the add dialog with cancel, Escape, or a backdrop click without add
 test('undoes changes in order, including restoring the initial list from an empty list', async ({ page }) => {
   const options = page.getByRole('option');
   const undo = page.getByRole('button', { name: 'Undo last change' });
-  const deleteButton = page.getByRole('button', { name: 'Delete selected item' });
+  const deleteButton = page.getByRole('button', { name: 'Delete selected items' });
 
   await page.getByRole('button', { name: 'Open add item form' }).click();
   await page.getByRole('textbox', { name: 'Add item to list' }).fill('Temporary');
@@ -123,29 +127,43 @@ test('undoes changes in order, including restoring the initial list from an empt
     'true',
   );
 
-  for (const item of ['Item 1', 'Item 2', 'Item 3', 'Item 4']) {
+  for (const item of ['Item 2', 'Item 3', 'Item 4']) {
     await page.getByRole('option', { name: `Select ${item}` }).click();
-    await deleteButton.click();
   }
 
+  await deleteButton.click();
   await expect(options).toHaveCount(0);
   await expect(deleteButton).toBeDisabled();
   await expect(undo).toBeEnabled();
 
   await undo.click();
-  await expect(options).toHaveText(['Item 4']);
+  await expect(options).toHaveText(['Item 1', 'Item 2', 'Item 3', 'Item 4']);
   await expect(page.getByRole('option', { name: 'Select Item 4' })).toHaveAttribute(
     'aria-selected',
     'true',
   );
-
-  await undo.click();
-  await undo.click();
-  await undo.click();
-  await expect(options).toHaveText(['Item 1', 'Item 2', 'Item 3', 'Item 4']);
   await expect(page.getByRole('option', { name: 'Select Item 1' })).toHaveAttribute(
     'aria-selected',
     'true',
   );
+
   await expect(undo).toBeDisabled();
+});
+
+test('deletes only the selected items and disables delete when selection is empty', async ({ page }) => {
+  const deleteButton = page.getByRole('button', { name: 'Delete selected items' });
+  const options = page.getByRole('option');
+
+  await page.getByRole('option', { name: 'Select Item 1' }).click();
+  await expect(deleteButton).toBeDisabled();
+
+  await page.getByRole('option', { name: 'Select Item 2' }).click();
+  await page.getByRole('option', { name: 'Select Item 4' }).click();
+  await expect(deleteButton).toBeEnabled();
+
+  await deleteButton.click();
+  await expect(options).toHaveText(['Item 1', 'Item 3']);
+  await expect(options.nth(0)).toHaveAttribute('aria-selected', 'false');
+  await expect(options.nth(1)).toHaveAttribute('aria-selected', 'false');
+  await expect(deleteButton).toBeDisabled();
 });
