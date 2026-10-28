@@ -16,10 +16,10 @@ On root:
 - To build production versions of both apps, run `npm run build`.
 - Run `npm run lint` to lint both apps with Oxlint.
 
-| App        | Development Server    | Component Tests                 | End-to-End Tests |
-| ---------- | --------------------- | ------------------------------- | ---------------- |
-| React      | `npm run dev:react`   | `npm run test-components:react` | (none)           |
-| Vanilla JS | `npm run dev:vanilla` | (none)                          | (none)           |
+| App        | Development Server    | Component Tests                 | End-to-End Tests         |
+| ---------- | --------------------- | ------------------------------- | ------------------------ |
+| React      | `npm run dev:react`   | `npm run test-components:react` | `npm run test-e2e:react` |
+| Vanilla JS | `npm run dev:vanilla` | (none)                          | (none)                   |
 
 ---
 
