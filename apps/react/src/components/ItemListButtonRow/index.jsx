@@ -21,7 +21,7 @@ function ItemListButtonRow({
   onAdd,
 }) {
   return (
-    <div className="mt-7 flex items-center gap-3">
+    <div className="mt-[19px] flex items-center gap-5 max-sm:flex-wrap">
       <Button
         aria-label="Undo last change"
         disabled={!canUndo}
@@ -35,7 +35,7 @@ function ItemListButtonRow({
           viewBox="0 0 24 24"
         >
           <path
-            d="M9 10 5 6m0 0 4-4M5 6h7a7 7 0 1 1-6.2 10.2"
+            d="M3 2v6h6M3.51 15a9 9 0 1 0 .49-9.49L3 8"
             stroke="currentColor"
             strokeLinecap="round"
             strokeLinejoin="round"
@@ -44,7 +44,7 @@ function ItemListButtonRow({
         </svg>
       </Button>
       <Button
-        className="min-w-[120px]"
+        className="min-w-[160px]"
         aria-label="Delete selected items"
         disabled={!canDelete}
         onClick={onDelete}
@@ -52,7 +52,7 @@ function ItemListButtonRow({
       >
         DELETE
       </Button>
-      <div className="ml-auto flex items-center gap-2">
+      <div className="ml-auto flex items-center gap-2 max-sm:ml-[120px]">
         <Button
           aria-label="Open add item form"
           onClick={onAdd}

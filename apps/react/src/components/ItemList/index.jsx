@@ -20,7 +20,7 @@ function ItemList({ items, selectedIds, onToggleSelection, onDeleteItem }) {
     <div
       aria-label={isEmpty ? undefined : 'Items'}
       aria-multiselectable={isEmpty ? undefined : 'true'}
-      className="mt-7 h-[218px] overflow-y-auto border border-[#dedede] bg-[#f7f7f7] p-2.5 shadow-inner"
+      className="mt-[35px] h-[227px] overflow-y-auto border border-[#CCCCCC] bg-[#F7F7F7] p-2"
       role={isEmpty ? undefined : 'listbox'}
     >
       {isEmpty ? (
@@ -39,8 +39,8 @@ function ItemList({ items, selectedIds, onToggleSelection, onDeleteItem }) {
               aria-label={`Select ${item.text}`}
               aria-selected={isSelected}
               className={isSelected
-                ? 'bg-[#394cff] text-white'
-                : 'text-[#666666] hover:bg-[#e9edff]'}
+                ? 'bg-[#324BFF] text-white'
+                : 'text-[#333333] hover:bg-[#e9edff]'}
               key={item.id}
               onClick={() => onToggleSelection(item.id)}
               onDoubleClick={() => onDeleteItem(item.id)}

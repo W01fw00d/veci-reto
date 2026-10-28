@@ -12,7 +12,7 @@ const TextInput = forwardRef(
   function TextInput({ className = '', ...inputProps }, ref) {
     return (
       <input
-        className={`h-[58px] w-full border border-[#dedede] bg-[#f7f7f7] px-4 text-base text-[#333333] outline-none transition placeholder:text-[#b5b5b5] focus:border-[#4650ff] focus:ring-2 focus:ring-[#4650ff]/20 ${className}`.trim()}
+        className={`h-[60px] w-full border border-[#CCCCCC] bg-[#F7F7F7] px-4 text-[18px] leading-[26px] text-[#333333] outline-none transition placeholder:text-[#999999] focus:border-[#324BFF] focus:ring-2 focus:ring-[#324BFF]/20 ${className}`.trim()}
         ref={ref}
         {...inputProps}
       />
