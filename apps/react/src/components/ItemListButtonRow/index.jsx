@@ -21,6 +21,11 @@ function ItemListButtonRow({
   onDelete,
   onAdd,
 }) {
+  const LABELS = {
+    ADD: "add",
+    DELETE: "delete",
+  };
+
   return (
     <div className="mt-[19px] flex items-center gap-5 max-sm:flex-wrap">
       <Button
@@ -51,7 +56,7 @@ function ItemListButtonRow({
         onClick={onDelete}
         variant="secondary"
       >
-        DELETE
+        {LABELS.DELETE}
       </Button>
       <div className="ml-auto flex items-center gap-2 max-sm:ml-[120px]">
         <Button
@@ -59,7 +64,7 @@ function ItemListButtonRow({
           onClick={onAdd}
           variant="primary"
         >
-          ADD
+          {LABELS.ADD}
         </Button>
       </div>
     </div>
