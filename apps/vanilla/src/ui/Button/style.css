@@ -1,5 +1,6 @@
 .button {
   transition: all 150ms ease;
+  text-transform: uppercase;
 }
 
 .button:disabled {
