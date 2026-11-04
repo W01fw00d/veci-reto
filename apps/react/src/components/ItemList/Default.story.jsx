@@ -3,12 +3,12 @@ import ItemList from '.';
 
 export default function Default() {
   const [items, setItems] = useState([
-    { id: 1, text: 'First item' },
-    { id: 2, text: 'Second item' },
+    { id: 'first-item', text: 'First item' },
+    { id: 'second-item', text: 'Second item' },
   ]);
-  const [selectedIds, setSelectedIds] = useState([1]);
+  const [selectedIds, setSelectedIds] = useState(['first-item']);
 
-  /** @param {number} id */
+  /** @param {string} id */
   function toggleSelection(id) {
     setSelectedIds((currentSelectedIds) =>
       currentSelectedIds.includes(id)
@@ -17,7 +17,7 @@ export default function Default() {
     );
   }
 
-  /** @param {number} id */
+  /** @param {string} id */
   function deleteItem(id) {
     setItems((currentItems) => currentItems.filter((item) => item.id !== id));
     setSelectedIds((currentSelectedIds) =>

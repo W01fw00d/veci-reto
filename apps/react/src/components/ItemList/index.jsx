@@ -10,12 +10,12 @@ const LABELS = {
 };
 
 /**
- * @typedef {{id: number, text: string}} Item
+ * @typedef {{id: string, text: string}} Item
  * @typedef {{
  *   items: Item[],
- *   selectedIds: number[],
- *   onToggleSelection: (id: number) => void,
- *   onDeleteItem: (id: number) => void
+ *   selectedIds: string[],
+ *   onToggleSelection: (id: string) => void,
+ *   onDeleteItem: (id: string) => void
  * }} ItemListProps
  */
 
