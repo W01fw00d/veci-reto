@@ -5,6 +5,9 @@ test('focuses the input and rejects an empty item', async ({ page }) => {
   const component = await mountComponent(page, 'AddItemModal');
   const input = component.getByRole('textbox', { name: 'Add item to list' });
 
+  await expect(component.locator('label[for="new-item"]')).toHaveCount(1);
+  await expect(component.locator('ui-text-input')).not.toHaveAttribute('id', 'new-item');
+  await expect(input).toHaveAttribute('id', 'new-item');
   await expect(input).toBeFocused();
   await component.getByRole('button', { name: 'Add item to list' }).click();
   await expect(component.getByRole('alert')).toHaveText('Item must be at least 1 character long');

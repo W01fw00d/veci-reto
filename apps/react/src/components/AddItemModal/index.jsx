@@ -22,6 +22,11 @@ const modalPanelClasses = [
 
 /** @param {AddItemModalProps} props */
 function AddItemModal({ onAdd, onClose }) {
+  const LABELS = {
+    ADD: "add",
+    CANCEL: "cancel",
+  };
+
   const [text, setText] = useState('');
   const [error, setError] = useState('');
   const inputRef = useRef(/** @type {HTMLInputElement | null} */(null));
@@ -86,7 +91,7 @@ function AddItemModal({ onAdd, onClose }) {
             type="submit"
             variant="primary"
           >
-            ADD
+            {LABELS.ADD}
           </Button>
           <Button
             aria-label="Cancel adding item"
@@ -94,7 +99,7 @@ function AddItemModal({ onAdd, onClose }) {
             onClick={onClose}
             variant="secondary"
           >
-            CANCEL
+            {LABELS.CANCEL}
           </Button>
         </div>
       </form>
