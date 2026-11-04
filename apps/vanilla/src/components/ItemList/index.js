@@ -37,14 +37,14 @@ class ItemList extends HTMLElement {
   handleClick = (event) => {
     const option = event.target.closest('[role="option"]');
     if (option && this.contains(option)) {
-      emit(this, 'item-toggle', Number(option.dataset.itemId));
+      emit(this, 'item-toggle', option.dataset.itemId);
     }
   };
 
   handleDoubleClick = (event) => {
     const option = event.target.closest('[role="option"]');
     if (option && this.contains(option)) {
-      emit(this, 'item-delete', Number(option.dataset.itemId));
+      emit(this, 'item-delete', option.dataset.itemId);
     }
   };
 
@@ -85,7 +85,7 @@ class ItemList extends HTMLElement {
     if (!this.isConnected) return;
     const selectedIds = this._selectedIds ?? [];
     this.querySelectorAll('[role="option"]').forEach((option) => {
-      const selected = selectedIds.includes(Number(option.dataset.itemId));
+      const selected = selectedIds.includes(option.dataset.itemId);
       option.setAttribute('aria-selected', String(selected));
       option.classList.toggle('is-selected', selected);
     });

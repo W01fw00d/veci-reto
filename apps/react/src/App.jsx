@@ -1,22 +1,22 @@
 // @ts-check
 
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import AppHeader from './components/AppHeader';
 import ItemListActions from './components/ItemListActions';
 import ItemList from './components/ItemList';
 import Panel from './components/ui/Panel';
 
 /**
- * @typedef {{id: number, text: string}} Item
- * @typedef {{items: Item[], selectedIds: number[]}} HistoryEntry
+ * @typedef {{id: string, text: string}} Item
+ * @typedef {{items: Item[], selectedIds: string[]}} HistoryEntry
  */
 
 /** @type {Item[]} */
 const initialItems = [
-  { id: 1, text: 'Item 1' },
-  { id: 2, text: 'Item 2' },
-  { id: 3, text: 'Item 3' },
-  { id: 4, text: 'Item 4' },
+  { id: crypto.randomUUID(), text: 'Item 1' },
+  { id: crypto.randomUUID(), text: 'Item 2' },
+  { id: crypto.randomUUID(), text: 'Item 3' },
+  { id: crypto.randomUUID(), text: 'Item 4' },
 ];
 
 const mainClasses = [
@@ -34,9 +34,8 @@ const panelClasses = [
 
 function App() {
   const [items, setItems] = useState(initialItems);
-  const [selectedIds, setSelectedIds] = useState([1]);
+  const [selectedIds, setSelectedIds] = useState([initialItems[0].id]);
   const [history, setHistory] = useState(/** @type {HistoryEntry[]} */([]));
-  const nextId = useRef(5);
 
   function rememberCurrentState() {
     setHistory((previousHistory) => [
@@ -47,8 +46,7 @@ function App() {
 
   /** @param {string} text */
   function handleAdd(text) {
-    const item = { id: nextId.current, text };
-    nextId.current += 1;
+    const item = { id: crypto.randomUUID(), text };
     rememberCurrentState();
     setItems((currentItems) => [...currentItems, item]);
     setSelectedIds([item.id]);
@@ -64,7 +62,7 @@ function App() {
     setSelectedIds([]);
   }
 
-  /** @param {number} id */
+  /** @param {string} id */
   function handleDeleteItem(id) {
     if (!items.some((item) => item.id === id)) return;
 

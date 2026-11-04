@@ -5,19 +5,18 @@ import '../ItemListActions';
 import '../../ui/Panel';
 
 const initialItems = [
-  { id: 1, text: 'Item 1' },
-  { id: 2, text: 'Item 2' },
-  { id: 3, text: 'Item 3' },
-  { id: 4, text: 'Item 4' },
+  { id: crypto.randomUUID(), text: 'Item 1' },
+  { id: crypto.randomUUID(), text: 'Item 2' },
+  { id: crypto.randomUUID(), text: 'Item 3' },
+  { id: crypto.randomUUID(), text: 'Item 4' },
 ];
 
 class ItemListApp extends HTMLElement {
   constructor() {
     super();
     this.items = initialItems.map((item) => ({ ...item }));
-    this.selectedIds = [1];
+    this.selectedIds = [this.items[0].id];
     this.history = [];
-    this.nextId = 5;
     this.handleItemToggle = this.handleItemToggle.bind(this);
     this.handleItemDelete = this.handleItemDelete.bind(this);
     this.handleItemsDelete = this.handleItemsDelete.bind(this);
@@ -95,8 +94,7 @@ class ItemListApp extends HTMLElement {
   }
 
   handleItemAdd(event) {
-    const item = { id: this.nextId, text: event.detail };
-    this.nextId += 1;
+    const item = { id: crypto.randomUUID(), text: event.detail };
     this.rememberCurrentState();
     this.items = [...this.items, item];
     this.selectedIds = [item.id];

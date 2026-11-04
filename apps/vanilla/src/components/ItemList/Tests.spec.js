@@ -17,12 +17,16 @@ test("supports adding and removing multiple selected items", async ({
   await expect(firstItem).toHaveAttribute("aria-selected", "true");
   await expect(secondItem).toHaveAttribute("aria-selected", "false");
   await secondItem.click();
-  await expect(component.getByTestId("selected-ids")).toHaveValue("[1,2]");
+  await expect(component.getByTestId("selected-ids")).toHaveValue(
+    '["first-item","second-item"]',
+  );
   await expect(firstItem).toHaveAttribute("aria-selected", "true");
   await expect(secondItem).toHaveAttribute("aria-selected", "true");
 
   await firstItem.click();
-  await expect(component.getByTestId("selected-ids")).toHaveValue("[2]");
+  await expect(component.getByTestId("selected-ids")).toHaveValue(
+    '["second-item"]',
+  );
   await expect(firstItem).toHaveAttribute("aria-selected", "false");
   await expect(secondItem).toHaveAttribute("aria-selected", "true");
   await secondItem.click();
@@ -44,7 +48,9 @@ test("deletes an item on double click and removes it from the selection", async 
   await secondItem.dblclick();
   await expect(component.getByRole("option")).toHaveCount(1);
   await expect(firstItem).toBeVisible();
-  await expect(component.getByTestId("selected-ids")).toHaveValue("[1]");
+  await expect(component.getByTestId("selected-ids")).toHaveValue(
+    '["first-item"]',
+  );
 });
 
 test("shows an empty state after deleting the last item", async ({ page }) => {

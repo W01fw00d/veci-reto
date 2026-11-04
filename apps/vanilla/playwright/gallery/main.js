@@ -44,10 +44,10 @@ function renderStory(story, props = {}) {
   if (story === 'ItemList') {
     const list = document.createElement('item-list');
     let items = [
-      { id: 1, text: 'First item' },
-      { id: 2, text: 'Second item' },
+      { id: 'first-item', text: 'First item' },
+      { id: 'second-item', text: 'Second item' },
     ];
-    let selectedIds = [1];
+    let selectedIds = ['first-item'];
     const selected = output('selected-ids', JSON.stringify(selectedIds));
     list.items = items;
     list.selectedIds = selectedIds;
