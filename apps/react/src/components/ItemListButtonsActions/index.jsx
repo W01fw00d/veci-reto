@@ -7,21 +7,14 @@ import { useItemsContext } from '../../contexts/ItemsContext';
 const LABELS = {
   UNDO: 'Undo last change',
   DELETE_SELECTED: 'Delete selected items',
-  OPEN_ADD: 'Open add item form',
-  ADD: 'add',
   DELETE: 'delete',
 };
 
-/**
- * @typedef {{onAdd: () => void}} ItemListButtonRowProps
- */
-
-/** @param {ItemListButtonRowProps} props */
-function ItemListButtonRow({ onAdd }) {
+function ItemListButtonsActions() {
   const { canDelete, canUndo, deleteSelected, undo } = useItemsContext();
 
   return (
-    <div className="mt-[19px] flex items-center gap-5 max-sm:flex-wrap">
+    <>
       <Button
         aria-label={LABELS.UNDO}
         disabled={!canUndo}
@@ -52,18 +45,8 @@ function ItemListButtonRow({ onAdd }) {
       >
         {LABELS.DELETE}
       </Button>
-      <div className="ml-auto flex items-center gap-2 max-sm:ml-[120px]">
-        <Button
-          className="uppercase"
-          aria-label={LABELS.OPEN_ADD}
-          onClick={onAdd}
-          variant="primary"
-        >
-          {LABELS.ADD}
-        </Button>
-      </div>
-    </div>
+    </>
   );
 }
 
-export default memo(ItemListButtonRow);
+export default memo(ItemListButtonsActions);

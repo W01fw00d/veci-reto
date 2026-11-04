@@ -1,6 +1,7 @@
 // @ts-check
 
 import Button from '../ui/Button';
+import { useItemsContext } from '../../contexts/ItemsContext';
 
 const LABELS = {
   ITEMS: 'Items',
@@ -9,18 +10,8 @@ const LABELS = {
   SELECT_ITEM: (text) => `Select ${text}`,
 };
 
-/**
- * @typedef {{id: string, text: string}} Item
- * @typedef {{
- *   items: Item[],
- *   selectedIds: string[],
- *   onToggleSelection: (id: string) => void,
- *   onDeleteItem: (id: string) => void
- * }} ItemListProps
- */
-
-/** @param {ItemListProps} props */
-function ItemList({ items, selectedIds, onToggleSelection, onDeleteItem }) {
+function ItemList() {
+  const { items, selectedIds, toggleSelection, deleteItem } = useItemsContext();
   const isEmpty = items.length === 0;
 
   return (
@@ -49,8 +40,8 @@ function ItemList({ items, selectedIds, onToggleSelection, onDeleteItem }) {
                 ? 'bg-[#324BFF] text-white'
                 : 'text-[#333333] hover:bg-[#e9edff]'}
               key={item.id}
-              onClick={() => onToggleSelection(item.id)}
-              onDoubleClick={() => onDeleteItem(item.id)}
+              onClick={() => toggleSelection(item.id)}
+              onDoubleClick={() => deleteItem(item.id)}
               role="option"
               variant="listOption"
             >

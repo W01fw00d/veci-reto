@@ -4,6 +4,7 @@ import { useRef, useState } from 'react';
 import Button from '../ui/Button';
 import TextInput from '../ui/TextInput';
 import Modal from '../ui/Modal';
+import { useItemsContext } from '../../contexts/ItemsContext';
 
 const MAX_ITEM_LENGTH = 1000;
 const LABELS = {
@@ -25,14 +26,13 @@ const modalPanelClasses = [
 ].join(' ');
 
 /**
- * @typedef {{
- *   onAdd: (text: string) => void,
- *   onClose: () => void
- * }} AddItemModalProps
+ * @typedef {{onClose: () => void}} AddItemModalProps
  */
 
 /** @param {AddItemModalProps} props */
-function AddItemModal({ onAdd, onClose }) {
+function AddItemModal({ onClose }) {
+  const { addItem } = useItemsContext();
+
   const [text, setText] = useState('');
   const [error, setError] = useState('');
   const inputRef = useRef(/** @type {HTMLInputElement | null} */(null));
@@ -54,7 +54,7 @@ function AddItemModal({ onAdd, onClose }) {
       return;
     }
 
-    onAdd(itemText);
+    addItem(itemText);
     onClose();
   }
 

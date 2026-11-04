@@ -1,7 +1,7 @@
 import { expect, test } from "@playwright/test";
 
 test("deletes selected items and restores them with undo", async ({ mount }) => {
-  const component = await mount("components/ItemListButtonRow/Default");
+  const component = await mount("components/ItemListButtonsActions/Default");
 
   const undo = component.getByRole("button", { name: "Undo last change" });
   const deleteButton = component.getByRole("button", {
@@ -20,8 +20,10 @@ test("deletes selected items and restores them with undo", async ({ mount }) => 
   await expect(undo).toBeDisabled();
 });
 
-test("keeps undo disabled when unavailable and handles add", async ({ mount }) => {
-  const component = await mount("components/ItemListButtonRow/Default");
+test("keeps undo disabled when unavailable and does not render add", async ({
+  mount,
+}) => {
+  const component = await mount("components/ItemListButtonsActions/Default");
 
   await expect(
     component.getByRole("button", { name: "Undo last change" }),
@@ -31,8 +33,5 @@ test("keeps undo disabled when unavailable and handles add", async ({ mount }) =
   ).toBeEnabled();
   await expect(
     component.getByRole("button", { name: "Open add item form" }),
-  ).toBeEnabled();
-
-  await component.getByRole("button", { name: "Open add item form" }).click();
-  await expect(component.getByTestId("actions")).toHaveValue('["add"]');
+  ).toHaveCount(0);
 });
