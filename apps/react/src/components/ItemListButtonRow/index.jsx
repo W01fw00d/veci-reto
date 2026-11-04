@@ -2,6 +2,7 @@
 
 import Button from '../ui/Button';
 import { memo } from 'react';
+import { useItemsContext } from '../../contexts/ItemsContext';
 
 const LABELS = {
   UNDO: 'Undo last change',
@@ -12,29 +13,19 @@ const LABELS = {
 };
 
 /**
- * @typedef {{
- *   canUndo: boolean,
- *   canDelete: boolean,
- *   onUndo: () => void,
- *   onDelete: () => void,
- *   onAdd: () => void
- * }} ItemListButtonRowProps
+ * @typedef {{onAdd: () => void}} ItemListButtonRowProps
  */
 
 /** @param {ItemListButtonRowProps} props */
-function ItemListButtonRow({
-  canUndo,
-  canDelete,
-  onUndo,
-  onDelete,
-  onAdd,
-}) {
+function ItemListButtonRow({ onAdd }) {
+  const { canDelete, canUndo, deleteSelected, undo } = useItemsContext();
+
   return (
     <div className="mt-[19px] flex items-center gap-5 max-sm:flex-wrap">
       <Button
         aria-label={LABELS.UNDO}
         disabled={!canUndo}
-        onClick={onUndo}
+        onClick={undo}
         variant="icon"
       >
         <svg
@@ -56,7 +47,7 @@ function ItemListButtonRow({
         className="uppercase min-w-[160px]"
         aria-label={LABELS.DELETE_SELECTED}
         disabled={!canDelete}
-        onClick={onDelete}
+        onClick={deleteSelected}
         variant="secondary"
       >
         {LABELS.DELETE}

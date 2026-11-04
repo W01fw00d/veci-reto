@@ -1,21 +1,18 @@
 import { useState } from 'react';
 import ItemListButtonRow from '.';
+import { ItemsProvider } from '../../contexts/ItemsContext';
 
-export default function Default({ canUndo = true, canDelete = true } = {}) {
+export default function Default() {
   const [actions, setActions] = useState(/** @type {string[]} */([]));
   /** @param {string} action */
   const record = (action) => setActions((current) => [...current, action]);
 
   return (
-    <>
+    <ItemsProvider>
       <ItemListButtonRow
-        canDelete={canDelete}
-        canUndo={canUndo}
         onAdd={() => record('add')}
-        onDelete={() => record('delete')}
-        onUndo={() => record('undo')}
       />
       <input data-testid="actions" readOnly value={JSON.stringify(actions)} />
-    </>
+    </ItemsProvider>
   );
 }

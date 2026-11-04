@@ -1,39 +1,38 @@
 import { expect, test } from "@playwright/test";
 
-test("enables actions and invokes their callbacks", async ({ mount }) => {
+test("deletes selected items and restores them with undo", async ({ mount }) => {
   const component = await mount("components/ItemListButtonRow/Default");
 
   const undo = component.getByRole("button", { name: "Undo last change" });
   const deleteButton = component.getByRole("button", {
     name: "Delete selected items",
   });
-  const add = component.getByRole("button", { name: "Open add item form" });
 
-  await expect(undo).toBeEnabled();
+  await expect(undo).toBeDisabled();
   await expect(deleteButton).toBeEnabled();
 
-  await undo.click();
   await deleteButton.click();
-  await add.click();
+  await expect(deleteButton).toBeDisabled();
+  await expect(undo).toBeEnabled();
 
-  await expect(component.getByTestId("actions")).toHaveValue(
-    '["undo","delete","add"]',
-  );
+  await undo.click();
+  await expect(deleteButton).toBeEnabled();
+  await expect(undo).toBeDisabled();
 });
 
-test("disables undo and delete when unavailable", async ({ mount }) => {
-  const component = await mount("components/ItemListButtonRow/Default", {
-    canUndo: false,
-    canDelete: false,
-  });
+test("keeps undo disabled when unavailable and handles add", async ({ mount }) => {
+  const component = await mount("components/ItemListButtonRow/Default");
 
   await expect(
     component.getByRole("button", { name: "Undo last change" }),
   ).toBeDisabled();
   await expect(
     component.getByRole("button", { name: "Delete selected items" }),
-  ).toBeDisabled();
+  ).toBeEnabled();
   await expect(
     component.getByRole("button", { name: "Open add item form" }),
   ).toBeEnabled();
+
+  await component.getByRole("button", { name: "Open add item form" }).click();
+  await expect(component.getByTestId("actions")).toHaveValue('["add"]');
 });
