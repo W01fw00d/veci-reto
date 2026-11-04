@@ -18,7 +18,7 @@ class AddItemModal extends HTMLElement {
         <form class="add-item-form" novalidate>
           <h2 id="add-item-title">Add item to list</h2>
           <label class="visually-hidden" for="new-item">Add item to list</label>
-          <ui-text-input aria-label="Add item to list" id="new-item" name="item" placeholder="Type the text here..." type="text"></ui-text-input>
+          <ui-text-input aria-label="Add item to list" input-id="new-item" name="item" placeholder="Type the text here..." type="text"></ui-text-input>
           <p class="validation-error" role="alert" hidden></p>
           <div class="modal-actions">
             <button aria-label="Add item to list" class="button button-primary modal-submit"
