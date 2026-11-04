@@ -59,6 +59,8 @@ Se han implementado todos los requerimentos obligatorios según las instruccione
 - En la solución de Vanilla JS se persisten los datos en memoria, como hace React.
 - Si quisiéramos persistir datos entre sesiones sin tener una Base de Datos,
   podríamos por ejemplo guardarlos en el storage del navegador.
+- Se guarda el historial de items en un Contexto de React, para evitar "prop drilling" entre los componentes hijos
+- Se usa `crypto.randomUUID()` para generar una id única y segura, simulando una id real que podríamos persistir en una BBDD.
 
 ## Arquitectura Frontend
 

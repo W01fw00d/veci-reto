@@ -10,7 +10,7 @@ test("focuses the input and rejects an empty item", async ({ mount }) => {
   await expect(component.getByRole("alert")).toHaveText(
     "Item must be at least 1 character long",
   );
-  await expect(component.getByTestId("added-item")).toHaveValue("");
+  await expect(component.getByRole("option")).toHaveCount(4);
   await expect(input).toBeFocused();
 });
 
@@ -24,18 +24,16 @@ test("rejects items longer than 1000 characters", async ({ mount }) => {
   await expect(component.getByRole("alert")).toHaveText(
     "Item must be no more than 1000 characters long",
   );
-  await expect(component.getByTestId("added-item")).toHaveValue("");
-  await expect(component.getByTestId("closed")).toHaveValue("false");
+  await expect(component.getByRole("option")).toHaveCount(4);
   await expect(input).toBeFocused();
 
   await input.fill("a".repeat(1000));
   await expect(component.getByRole("alert")).toHaveCount(0);
   await component.getByRole("button", { name: "Add item to list" }).click();
 
-  await expect(component.getByTestId("added-item")).toHaveValue(
-    "a".repeat(1000),
-  );
-  await expect(component.getByTestId("closed")).toHaveValue("true");
+  await expect(component.getByRole("option")).toHaveCount(5);
+  await expect(component.getByRole("option").last()).toHaveText("a".repeat(1000));
+  await expect(component.getByRole("dialog")).toHaveCount(0);
 });
 
 test("trims and adds a valid item before closing", async ({ mount }) => {
@@ -46,8 +44,10 @@ test("trims and adds a valid item before closing", async ({ mount }) => {
     .fill("  New item  ");
   await component.getByRole("button", { name: "Add item to list" }).click();
 
-  await expect(component.getByTestId("added-item")).toHaveValue("New item");
-  await expect(component.getByTestId("closed")).toHaveValue("true");
+  await expect(
+    component.getByRole("option", { name: "Select New item" }),
+  ).toHaveAttribute("aria-selected", "true");
+  await expect(component.getByRole("dialog")).toHaveCount(0);
 });
 
 test("closes without adding when cancelled", async ({ mount }) => {
@@ -55,8 +55,8 @@ test("closes without adding when cancelled", async ({ mount }) => {
 
   await component.getByRole("button", { name: "Cancel adding item" }).click();
 
-  await expect(component.getByTestId("closed")).toHaveValue("true");
-  await expect(component.getByTestId("added-item")).toHaveValue("");
+  await expect(component.getByRole("dialog")).toHaveCount(0);
+  await expect(component.getByRole("option")).toHaveCount(4);
 });
 
 test("closes when Escape is pressed", async ({ mount, page }) => {
@@ -64,6 +64,6 @@ test("closes when Escape is pressed", async ({ mount, page }) => {
 
   await page.keyboard.press("Escape");
 
-  await expect(component.getByTestId("closed")).toHaveValue("true");
-  await expect(component.getByTestId("added-item")).toHaveValue("");
+  await expect(component.getByRole("dialog")).toHaveCount(0);
+  await expect(component.getByRole("option")).toHaveCount(4);
 });
