@@ -3,6 +3,14 @@
 import Button from '../ui/Button';
 import { memo } from 'react';
 
+const LABELS = {
+  UNDO: 'Undo last change',
+  DELETE_SELECTED: 'Delete selected items',
+  OPEN_ADD: 'Open add item form',
+  ADD: 'add',
+  DELETE: 'delete',
+};
+
 /**
  * @typedef {{
  *   canUndo: boolean,
@@ -21,15 +29,10 @@ function ItemListButtonRow({
   onDelete,
   onAdd,
 }) {
-  const LABELS = {
-    ADD: "add",
-    DELETE: "delete",
-  };
-
   return (
     <div className="mt-[19px] flex items-center gap-5 max-sm:flex-wrap">
       <Button
-        aria-label="Undo last change"
+        aria-label={LABELS.UNDO}
         disabled={!canUndo}
         onClick={onUndo}
         variant="icon"
@@ -50,8 +53,8 @@ function ItemListButtonRow({
         </svg>
       </Button>
       <Button
-        className="min-w-[160px]"
-        aria-label="Delete selected items"
+        className="uppercase min-w-[160px]"
+        aria-label={LABELS.DELETE_SELECTED}
         disabled={!canDelete}
         onClick={onDelete}
         variant="secondary"
@@ -60,7 +63,8 @@ function ItemListButtonRow({
       </Button>
       <div className="ml-auto flex items-center gap-2 max-sm:ml-[120px]">
         <Button
-          aria-label="Open add item form"
+          className="uppercase"
+          aria-label={LABELS.OPEN_ADD}
           onClick={onAdd}
           variant="primary"
         >

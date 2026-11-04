@@ -2,6 +2,13 @@
 
 import Button from '../ui/Button';
 
+const LABELS = {
+  ITEMS: 'Items',
+  EMPTY: 'No saved items found',
+  /** @param {string} text */
+  SELECT_ITEM: (text) => `Select ${text}`,
+};
+
 /**
  * @typedef {{id: number, text: string}} Item
  * @typedef {{
@@ -18,7 +25,7 @@ function ItemList({ items, selectedIds, onToggleSelection, onDeleteItem }) {
 
   return (
     <div
-      aria-label={isEmpty ? undefined : 'Items'}
+      aria-label={isEmpty ? undefined : LABELS.ITEMS}
       aria-multiselectable={isEmpty ? undefined : 'true'}
       className="mt-[35px] h-[227px] overflow-y-auto border border-[#CCCCCC] bg-[#F7F7F7] p-2"
       role={isEmpty ? undefined : 'listbox'}
@@ -28,7 +35,7 @@ function ItemList({ items, selectedIds, onToggleSelection, onDeleteItem }) {
           className="flex h-full items-center justify-center text-[#666666]"
           role="status"
         >
-          No saved items found
+          {LABELS.EMPTY}
         </p>
       ) : (
         items.map((item) => {
@@ -36,7 +43,7 @@ function ItemList({ items, selectedIds, onToggleSelection, onDeleteItem }) {
 
           return (
             <Button
-              aria-label={`Select ${item.text}`}
+              aria-label={LABELS.SELECT_ITEM(item.text)}
               aria-selected={isSelected}
               className={isSelected
                 ? 'bg-[#324BFF] text-white'

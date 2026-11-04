@@ -5,25 +5,30 @@ import "../../ui/TextInput";
 import { emit } from "../../utils/events.js";
 
 const MAX_ITEM_LENGTH = 1000;
+const LABELS = {
+  ADD: "add",
+  CANCEL: "cancel",
+  ADD_ITEM_TITLE: "Add item to list",
+  CANCEL_ADDING_ITEM: "Cancel adding item",
+  INPUT_PLACEHOLDER: "Type the text here...",
+  EMPTY_ITEM_ERROR: "Item must be at least 1 character long",
+  ITEM_TOO_LONG_ERROR: (maxLength) =>
+    `Item must be no more than ${maxLength} characters long`,
+};
 
 class AddItemModal extends HTMLElement {
   connectedCallback() {
-    const LABELS = {
-      ADD: "add",
-      CANCEL: "cancel",
-    };
-
     this.innerHTML = `
       <ui-modal labelledby="add-item-title">
         <form class="add-item-form" novalidate>
-          <h2 id="add-item-title">Add item to list</h2>
-          <label class="visually-hidden" for="new-item">Add item to list</label>
-          <ui-text-input aria-label="Add item to list" input-id="new-item" name="item" placeholder="Type the text here..." type="text"></ui-text-input>
+          <h2 id="add-item-title">${LABELS.ADD_ITEM_TITLE}</h2>
+          <label class="visually-hidden" for="new-item">${LABELS.ADD_ITEM_TITLE}</label>
+          <ui-text-input aria-label="${LABELS.ADD_ITEM_TITLE}" input-id="new-item" name="item" placeholder="${LABELS.INPUT_PLACEHOLDER}" type="text"></ui-text-input>
           <p class="validation-error" role="alert" hidden></p>
           <div class="modal-actions">
-            <button aria-label="Add item to list" class="button button-primary modal-submit"
+            <button aria-label="${LABELS.ADD_ITEM_TITLE}" class="button button-uppercase button-primary modal-submit"
               type="submit">${LABELS.ADD}</button>
-            <button aria-label="Cancel adding item" class="button button-secondary modal-cancel"
+            <button aria-label="${LABELS.CANCEL_ADDING_ITEM}" class="button button-uppercase button-secondary modal-cancel"
               type="button">${LABELS.CANCEL}</button>
           </div>
         </form>
@@ -57,12 +62,12 @@ class AddItemModal extends HTMLElement {
     const text = this.input.value.trim();
 
     if (!text) {
-      this.showError("Item must be at least 1 character long");
+      this.showError(LABELS.EMPTY_ITEM_ERROR);
       return;
     }
     if (text.length > MAX_ITEM_LENGTH) {
       this.showError(
-        `Item must be no more than ${MAX_ITEM_LENGTH} characters long`,
+        LABELS.ITEM_TOO_LONG_ERROR(MAX_ITEM_LENGTH),
       );
       return;
     }

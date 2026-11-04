@@ -27,7 +27,7 @@ function Button({
 }) {
   return (
     <button
-      className={`transition disabled:cursor-not-allowed uppercase ${variantClasses[variant]} ${className}`.trim()}
+      className={`transition disabled:cursor-not-allowed ${variantClasses[variant]} ${className}`.trim()}
       type={type}
       {...buttonProps}
     >

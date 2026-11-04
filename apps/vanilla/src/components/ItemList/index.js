@@ -2,6 +2,12 @@ import './style.css';
 import { createButton } from '../../ui/Button';
 import { emit } from '../../utils/events.js';
 
+const LABELS = {
+  ITEMS: 'Items',
+  EMPTY: 'No saved items found',
+  SELECT_ITEM: (text) => `Select ${text}`,
+};
+
 class ItemList extends HTMLElement {
   set items(value) {
     if (this._items === value) {
@@ -53,17 +59,17 @@ class ItemList extends HTMLElement {
       this.removeAttribute('aria-label');
       this.removeAttribute('aria-multiselectable');
       this.removeAttribute('role');
-      this.innerHTML = '<p class="empty-state" role="status">No saved items found</p>';
+      this.innerHTML = `<p class="empty-state" role="status">${LABELS.EMPTY}</p>`;
       return;
     }
 
-    this.setAttribute('aria-label', 'Items');
+    this.setAttribute('aria-label', LABELS.ITEMS);
     this.setAttribute('aria-multiselectable', 'true');
     this.setAttribute('role', 'listbox');
     this.replaceChildren(...items.map((item) => {
       const selected = selectedIds.includes(item.id);
       const option = createButton({
-        ariaLabel: `Select ${item.text}`,
+        ariaLabel: LABELS.SELECT_ITEM(item.text),
         className: `list-option${selected ? ' is-selected' : ''}`,
         text: item.text,
         variant: 'listOption',

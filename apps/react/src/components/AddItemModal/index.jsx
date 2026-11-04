@@ -6,6 +6,17 @@ import TextInput from '../ui/TextInput';
 import Modal from '../ui/Modal';
 
 const MAX_ITEM_LENGTH = 1000;
+const LABELS = {
+  ADD: 'add',
+  CANCEL: 'cancel',
+  ADD_ITEM_TITLE: 'Add item to list',
+  CANCEL_ADDING_ITEM: 'Cancel adding item',
+  INPUT_PLACEHOLDER: 'Type the text here...',
+  EMPTY_ITEM_ERROR: 'Item must be at least 1 character long',
+  /** @param {number} maxLength */
+  ITEM_TOO_LONG_ERROR: (maxLength) =>
+    `Item must be no more than ${maxLength} characters long`,
+};
 const modalPanelClasses = [
   'box-border h-[276px] w-full max-w-[700px]',
   'rounded-[20px] p-[50px] pb-[44px]',
@@ -22,11 +33,6 @@ const modalPanelClasses = [
 
 /** @param {AddItemModalProps} props */
 function AddItemModal({ onAdd, onClose }) {
-  const LABELS = {
-    ADD: "add",
-    CANCEL: "cancel",
-  };
-
   const [text, setText] = useState('');
   const [error, setError] = useState('');
   const inputRef = useRef(/** @type {HTMLInputElement | null} */(null));
@@ -37,13 +43,13 @@ function AddItemModal({ onAdd, onClose }) {
     const itemText = text.trim();
 
     if (!itemText) {
-      setError('Item must be at least 1 character long');
+      setError(LABELS.EMPTY_ITEM_ERROR);
       inputRef.current?.focus();
       return;
     }
 
     if (itemText.length > MAX_ITEM_LENGTH) {
-      setError(`Item must be no more than ${MAX_ITEM_LENGTH} characters long`);
+      setError(LABELS.ITEM_TOO_LONG_ERROR(MAX_ITEM_LENGTH));
       inputRef.current?.focus();
       return;
     }
@@ -64,10 +70,10 @@ function AddItemModal({ onAdd, onClose }) {
           className="mb-5 text-[18px] leading-[22px] font-normal text-[#333333]"
           id="add-item-title"
         >
-          Add item to list
+          {LABELS.ADD_ITEM_TITLE}
         </h2>
         <label className="sr-only" htmlFor="new-item">
-          Add item to list
+          {LABELS.ADD_ITEM_TITLE}
         </label>
         <TextInput
           id="new-item"
@@ -75,7 +81,7 @@ function AddItemModal({ onAdd, onClose }) {
             setText(event.target.value);
             if (error) setError('');
           }}
-          placeholder="Type the text here..."
+          placeholder={LABELS.INPUT_PLACEHOLDER}
           ref={inputRef}
           value={text}
         />
@@ -86,16 +92,16 @@ function AddItemModal({ onAdd, onClose }) {
         )}
         <div className="mt-5 flex justify-end gap-5">
           <Button
-            aria-label="Add item to list"
-            className="px-7 max-sm:min-w-0 max-sm:flex-1"
+            aria-label={LABELS.ADD_ITEM_TITLE}
+            className="uppercase px-7 max-sm:min-w-0 max-sm:flex-1"
             type="submit"
             variant="primary"
           >
             {LABELS.ADD}
           </Button>
           <Button
-            aria-label="Cancel adding item"
-            className="min-w-[160px] px-6 max-sm:min-w-0 max-sm:flex-1"
+            aria-label={LABELS.CANCEL_ADDING_ITEM}
+            className="uppercase min-w-[160px] px-6 max-sm:min-w-0 max-sm:flex-1"
             onClick={onClose}
             variant="secondary"
           >
